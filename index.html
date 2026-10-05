@@ -1,0 +1,2752 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《萬燈皆燼》- 純靜態小說閱讀站（全 365 章・繁體中文）</title>
+  <meta name="description" content="蒼溟大陸，人人生來魂中有一盞命燈。十六歲測燈，有焰者可修仙，無焰者被烙上剔籍印...《萬燈皆燼》全書 365 章純靜態閱讀站，無廣告、無付費牆、GitHub Pages 相容。">
+  <script>
+    (function(){
+      var t = localStorage.getItem('nov_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      var fs = localStorage.getItem('nov_fontsize');
+      if (fs) document.documentElement.style.setProperty('--font-size', fs + 'px');
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand">
+        <span class="brand-flame">🔥</span>
+        <span class="brand-name">萬燈皆燼</span>
+      </a>
+      <div class="header-chapter-title">全書 365 章・全九卷完結</div>
+      <div class="header-actions">
+        <div class="font-controls">
+          <button id="font-dec" class="tool-btn" title="縮小字體" aria-label="縮小字體">A-</button>
+          <button id="font-inc" class="tool-btn" title="放大字體" aria-label="放大字體">A+</button>
+        </div>
+        <button id="theme-toggle" class="tool-btn" title="切換閱讀主題" aria-label="切換閱讀主題">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主內容容器 -->
+  <main class="main-wrap">
+
+    <!-- 書籍 Hero 卡片 -->
+    <section class="novel-hero">
+      <div class="hero-cover-wrap">
+        <img src="cover.jpg" alt="《萬燈皆燼》封面" class="hero-cover" width="220" height="308">
+      </div>
+      <div class="hero-info">
+        <div class="hero-badges">
+          <span class="badge badge-accent">完結・共 365 章</span>
+          <span class="badge badge-gold">全九卷</span>
+          <span class="badge">約 1,583,660 字</span>
+          <span class="badge">暗黑仙俠 / 修真逆襲</span>
+        </div>
+        <h1 class="hero-title">萬燈皆燼</h1>
+        <p class="hero-slogan">「天看不見他，所以他能把天燒穿。」</p>
+        <div class="hero-actions">
+          <a href="chapters/001.html" class="btn btn-primary">🔥 開始閱讀第一章</a>
+          <a id="btn-continue" href="chapters/001.html" class="btn btn-outline" style="display:none;">📖 繼續閱讀</a>
+          <a href="#toc" class="btn btn-ghost">📋 瀏覽章節目錄</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 故事簡介 -->
+    <section class="synopsis-card">
+      <h2 class="section-title">故事簡介</h2>
+      <div class="synopsis-body">
+<p>蒼溟大陸，人人生來魂中有一盞命燈。十六歲測燈，有焰者可修仙，無焰者被烙上剔籍印，終身不准碰靈氣。</p>
+<p>義莊長大的少年沈燼測出「無焰」，測燈的青銅燈卻在他手下裂了一道縫。當夜燈衛上門抓人，養他十六年的瘸叔原來是叛逃的掌燈，為護他戰死。瘸叔最後一點餘燼點燃了沈燼的命燈——一盞只燒死人餘燼、天看不見、天燈簿也記不下的燈。</p>
+<p>他帶著殺師之仇混進仙門當雜役，靠死人的火一步步變強，卻也一點點被死者的記憶吞掉。等他登上天闕才知道，所謂飛升，是一場延續萬年的收割。</p>
+      </div>
+    </section>
+
+    <!-- 章節目錄區塊 -->
+    <section class="toc-controls" id="toc">
+      <div class="toc-header-bar">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <h2 class="section-title" style="margin-bottom:0;">章節目錄</h2>
+          <span class="badge" id="toc-count">全 365 章</span>
+        </div>
+        <div class="toc-search-wrap">
+          <input type="text" id="chapter-search" class="search-input" placeholder="搜尋章名或章號（例：無焰、042、第一章）..." autocomplete="off">
+          <button id="search-clear" class="search-clear-btn" style="display:none;" title="清除搜尋" aria-label="清除搜尋">✕</button>
+        </div>
+      </div>
+
+      <!-- 分卷標籤 -->
+      <div class="volume-tabs">
+        <button class="vol-tab active" data-vol="all">全部章節 (365)</button>
+        <button class="vol-tab" data-vol="1">卷一 (1–40)</button>
+        <button class="vol-tab" data-vol="2">卷二 (41–85)</button>
+        <button class="vol-tab" data-vol="3">卷三 (86–130)</button>
+        <button class="vol-tab" data-vol="4">卷四 (131–175)</button>
+        <button class="vol-tab" data-vol="5">卷五 (176–215)</button>
+        <button class="vol-tab" data-vol="6">卷六 (216–260)</button>
+        <button class="vol-tab" data-vol="7">卷七 (261–300)</button>
+        <button class="vol-tab" data-vol="8">卷八 (301–335)</button>
+        <button class="vol-tab" data-vol="9">卷九 (336–365)</button>
+      </div>
+    </section>
+
+    <!-- 章節列表容器 -->
+    <div id="volumes-container">
+      <div class="volume-section" id="vol-1" data-vol-num="1">
+        <div class="volume-header">
+          <h3>第一卷　燼火初燃 <small>（第 1–40 章）</small></h3>
+          <span class="volume-desc">剔籍少年・燼火初燃・夜斬巡燈</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/001.html" class="chapter-card" data-title="第一章　無焰" data-code="001" data-num="1">
+            <div class="card-main">
+              <span class="card-code">#001</span>
+              <span class="card-title">第一章　無焰</span>
+            </div>
+            <span class="card-words">4,968字</span>
+          </a>
+          <a href="chapters/002.html" class="chapter-card" data-title="第二章　義莊夜叩" data-code="002" data-num="2">
+            <div class="card-main">
+              <span class="card-code">#002</span>
+              <span class="card-title">第二章　義莊夜叩</span>
+            </div>
+            <span class="card-words">4,144字</span>
+          </a>
+          <a href="chapters/003.html" class="chapter-card" data-title="第三章　餘燼" data-code="003" data-num="3">
+            <div class="card-main">
+              <span class="card-code">#003</span>
+              <span class="card-title">第三章　餘燼</span>
+            </div>
+            <span class="card-words">4,534字</span>
+          </a>
+          <a href="chapters/004.html" class="chapter-card" data-title="第四章　亂葬崗" data-code="004" data-num="4">
+            <div class="card-main">
+              <span class="card-code">#004</span>
+              <span class="card-title">第四章　亂葬崗</span>
+            </div>
+            <span class="card-words">4,196字</span>
+          </a>
+          <a href="chapters/005.html" class="chapter-card" data-title="第五章　盜墓的少年" data-code="005" data-num="5">
+            <div class="card-main">
+              <span class="card-code">#005</span>
+              <span class="card-title">第五章　盜墓的少年</span>
+            </div>
+            <span class="card-words">4,890字</span>
+          </a>
+          <a href="chapters/006.html" class="chapter-card" data-title="第六章　落燈渡" data-code="006" data-num="6">
+            <div class="card-main">
+              <span class="card-code">#006</span>
+              <span class="card-title">第六章　落燈渡</span>
+            </div>
+            <span class="card-words">4,955字</span>
+          </a>
+          <a href="chapters/007.html" class="chapter-card" data-title="第七章　河屍" data-code="007" data-num="7">
+            <div class="card-main">
+              <span class="card-code">#007</span>
+              <span class="card-title">第七章　河屍</span>
+            </div>
+            <span class="card-words">5,237字</span>
+          </a>
+          <a href="chapters/008.html" class="chapter-card" data-title="第八章　照燈石" data-code="008" data-num="8">
+            <div class="card-main">
+              <span class="card-code">#008</span>
+              <span class="card-title">第八章　照燈石</span>
+            </div>
+            <span class="card-words">4,556字</span>
+          </a>
+          <a href="chapters/009.html" class="chapter-card" data-title="第九章　雜役院" data-code="009" data-num="9">
+            <div class="card-main">
+              <span class="card-code">#009</span>
+              <span class="card-title">第九章　雜役院</span>
+            </div>
+            <span class="card-words">4,605字</span>
+          </a>
+          <a href="chapters/010.html" class="chapter-card" data-title="第十章　青嵐引氣訣" data-code="010" data-num="10">
+            <div class="card-main">
+              <span class="card-code">#010</span>
+              <span class="card-title">第十章　青嵐引氣訣</span>
+            </div>
+            <span class="card-words">4,511字</span>
+          </a>
+          <a href="chapters/011.html" class="chapter-card" data-title="第十一章　斂屍房" data-code="011" data-num="11">
+            <div class="card-main">
+              <span class="card-code">#011</span>
+              <span class="card-title">第十一章　斂屍房</span>
+            </div>
+            <span class="card-words">4,626字</span>
+          </a>
+          <a href="chapters/012.html" class="chapter-card" data-title="第十二章　霜月峰下" data-code="012" data-num="12">
+            <div class="card-main">
+              <span class="card-code">#012</span>
+              <span class="card-title">第十二章　霜月峰下</span>
+            </div>
+            <span class="card-words">4,378字</span>
+          </a>
+          <a href="chapters/013.html" class="chapter-card" data-title="第十三章　松林夜客" data-code="013" data-num="13">
+            <div class="card-main">
+              <span class="card-code">#013</span>
+              <span class="card-title">第十三章　松林夜客</span>
+            </div>
+            <span class="card-words">4,177字</span>
+          </a>
+          <a href="chapters/014.html" class="chapter-card" data-title="第十四章　斷燈手" data-code="014" data-num="14">
+            <div class="card-main">
+              <span class="card-code">#014</span>
+              <span class="card-title">第十四章　斷燈手</span>
+            </div>
+            <span class="card-words">4,389字</span>
+          </a>
+          <a href="chapters/015.html" class="chapter-card" data-title="第十五章　後山禁林" data-code="015" data-num="15">
+            <div class="card-main">
+              <span class="card-code">#015</span>
+              <span class="card-title">第十五章　後山禁林</span>
+            </div>
+            <span class="card-words">4,070字</span>
+          </a>
+          <a href="chapters/016.html" class="chapter-card" data-title="第十六章　啞婆" data-code="016" data-num="16">
+            <div class="card-main">
+              <span class="card-code">#016</span>
+              <span class="card-title">第十六章　啞婆</span>
+            </div>
+            <span class="card-words">4,045字</span>
+          </a>
+          <a href="chapters/017.html" class="chapter-card" data-title="第十七章　交易" data-code="017" data-num="17">
+            <div class="card-main">
+              <span class="card-code">#017</span>
+              <span class="card-title">第十七章　交易</span>
+            </div>
+            <span class="card-words">4,038字</span>
+          </a>
+          <a href="chapters/018.html" class="chapter-card" data-title="第十八章　燈塚" data-code="018" data-num="18">
+            <div class="card-main">
+              <span class="card-code">#018</span>
+              <span class="card-title">第十八章　燈塚</span>
+            </div>
+            <span class="card-words">4,150字</span>
+          </a>
+          <a href="chapters/019.html" class="chapter-card" data-title="第十九章　自帳" data-code="019" data-num="19">
+            <div class="card-main">
+              <span class="card-code">#019</span>
+              <span class="card-title">第十九章　自帳</span>
+            </div>
+            <span class="card-words">4,141字</span>
+          </a>
+          <a href="chapters/020.html" class="chapter-card" data-title="第二十章　孫長庚的帳" data-code="020" data-num="20">
+            <div class="card-main">
+              <span class="card-code">#020</span>
+              <span class="card-title">第二十章　孫長庚的帳</span>
+            </div>
+            <span class="card-words">4,074字</span>
+          </a>
+          <a href="chapters/021.html" class="chapter-card" data-title="第二十一章　十九口" data-code="021" data-num="21">
+            <div class="card-main">
+              <span class="card-code">#021</span>
+              <span class="card-title">第二十一章　十九口</span>
+            </div>
+            <span class="card-words">4,376字</span>
+          </a>
+          <a href="chapters/022.html" class="chapter-card" data-title="第二十二章　小比報名" data-code="022" data-num="22">
+            <div class="card-main">
+              <span class="card-code">#022</span>
+              <span class="card-title">第二十二章　小比報名</span>
+            </div>
+            <span class="card-words">4,789字</span>
+          </a>
+          <a href="chapters/023.html" class="chapter-card" data-title="第二十三章　小比首輪" data-code="023" data-num="23">
+            <div class="card-main">
+              <span class="card-code">#023</span>
+              <span class="card-title">第二十三章　小比首輪</span>
+            </div>
+            <span class="card-words">4,563字</span>
+          </a>
+          <a href="chapters/024.html" class="chapter-card" data-title="第二十四章　青焰" data-code="024" data-num="24">
+            <div class="card-main">
+              <span class="card-code">#024</span>
+              <span class="card-title">第二十四章　青焰</span>
+            </div>
+            <span class="card-words">4,694字</span>
+          </a>
+          <a href="chapters/025.html" class="chapter-card" data-title="第二十五章　入外門" data-code="025" data-num="25">
+            <div class="card-main">
+              <span class="card-code">#025</span>
+              <span class="card-title">第二十五章　入外門</span>
+            </div>
+            <span class="card-words">4,388字</span>
+          </a>
+          <a href="chapters/026.html" class="chapter-card" data-title="第二十六章　夜探執事院" data-code="026" data-num="26">
+            <div class="card-main">
+              <span class="card-code">#026</span>
+              <span class="card-title">第二十六章　夜探執事院</span>
+            </div>
+            <span class="card-words">4,594字</span>
+          </a>
+          <a href="chapters/027.html" class="chapter-card" data-title="第二十七章　祝千秋上山" data-code="027" data-num="27">
+            <div class="card-main">
+              <span class="card-code">#027</span>
+              <span class="card-title">第二十七章　祝千秋上山</span>
+            </div>
+            <span class="card-words">4,221字</span>
+          </a>
+          <a href="chapters/028.html" class="chapter-card" data-title="第二十八章　守陵人" data-code="028" data-num="28">
+            <div class="card-main">
+              <span class="card-code">#028</span>
+              <span class="card-title">第二十八章　守陵人</span>
+            </div>
+            <span class="card-words">4,717字</span>
+          </a>
+          <a href="chapters/029.html" class="chapter-card" data-title="第二十九章　複測" data-code="029" data-num="29">
+            <div class="card-main">
+              <span class="card-code">#029</span>
+              <span class="card-title">第二十九章　複測</span>
+            </div>
+            <span class="card-words">4,164字</span>
+          </a>
+          <a href="chapters/030.html" class="chapter-card" data-title="第三十章　劍問" data-code="030" data-num="30">
+            <div class="card-main">
+              <span class="card-code">#030</span>
+              <span class="card-title">第三十章　劍問</span>
+            </div>
+            <span class="card-words">4,034字</span>
+          </a>
+          <a href="chapters/031.html" class="chapter-card" data-title="第三十一章　林家藥鋪" data-code="031" data-num="31">
+            <div class="card-main">
+              <span class="card-code">#031</span>
+              <span class="card-title">第三十一章　林家藥鋪</span>
+            </div>
+            <span class="card-words">4,018字</span>
+          </a>
+          <a href="chapters/032.html" class="chapter-card" data-title="第三十二章　下山" data-code="032" data-num="32">
+            <div class="card-main">
+              <span class="card-code">#032</span>
+              <span class="card-title">第三十二章　下山</span>
+            </div>
+            <span class="card-words">4,002字</span>
+          </a>
+          <a href="chapters/033.html" class="chapter-card" data-title="第三十三章　舊鎮新墳" data-code="033" data-num="33">
+            <div class="card-main">
+              <span class="card-code">#033</span>
+              <span class="card-title">第三十三章　舊鎮新墳</span>
+            </div>
+            <span class="card-words">4,341字</span>
+          </a>
+          <a href="chapters/034.html" class="chapter-card" data-title="第三十四章　趙家宅" data-code="034" data-num="34">
+            <div class="card-main">
+              <span class="card-code">#034</span>
+              <span class="card-title">第三十四章　趙家宅</span>
+            </div>
+            <span class="card-words">4,294字</span>
+          </a>
+          <a href="chapters/035.html" class="chapter-card" data-title="第三十五章　對質" data-code="035" data-num="35">
+            <div class="card-main">
+              <span class="card-code">#035</span>
+              <span class="card-title">第三十五章　對質</span>
+            </div>
+            <span class="card-words">4,298字</span>
+          </a>
+          <a href="chapters/036.html" class="chapter-card" data-title="第三十六章　攝燈" data-code="036" data-num="36">
+            <div class="card-main">
+              <span class="card-code">#036</span>
+              <span class="card-title">第三十六章　攝燈</span>
+            </div>
+            <span class="card-words">4,268字</span>
+          </a>
+          <a href="chapters/037.html" class="chapter-card" data-title="第三十七章　百棺再起" data-code="037" data-num="37">
+            <div class="card-main">
+              <span class="card-code">#037</span>
+              <span class="card-title">第三十七章　百棺再起</span>
+            </div>
+            <span class="card-words">4,268字</span>
+          </a>
+          <a href="chapters/038.html" class="chapter-card" data-title="第三十八章　裂器名冊" data-code="038" data-num="38">
+            <div class="card-main">
+              <span class="card-code">#038</span>
+              <span class="card-title">第三十八章　裂器名冊</span>
+            </div>
+            <span class="card-words">4,284字</span>
+          </a>
+          <a href="chapters/039.html" class="chapter-card" data-title="第三十九章　燼燒琉璃" data-code="039" data-num="39">
+            <div class="card-main">
+              <span class="card-code">#039</span>
+              <span class="card-title">第三十九章　燼燒琉璃</span>
+            </div>
+            <span class="card-words">4,256字</span>
+          </a>
+          <a href="chapters/040.html" class="chapter-card" data-title="第四十章　巡燈使之死" data-code="040" data-num="40">
+            <div class="card-main">
+              <span class="card-code">#040</span>
+              <span class="card-title">第四十章　巡燈使之死</span>
+            </div>
+            <span class="card-words">4,284字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-2" data-vol-num="2">
+        <div class="volume-header">
+          <h3>第二卷　青嵐問劍 <small>（第 41–85 章）</small></h3>
+          <span class="volume-desc">宗門暗湧・青嵐問劍・築基成陣</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/041.html" class="chapter-card" data-title="第四十一章　定焰" data-code="041" data-num="41">
+            <div class="card-main">
+              <span class="card-code">#041</span>
+              <span class="card-title">第四十一章　定焰</span>
+            </div>
+            <span class="card-words">4,273字</span>
+          </a>
+          <a href="chapters/042.html" class="chapter-card" data-title="第四十二章　律峰來人" data-code="042" data-num="42">
+            <div class="card-main">
+              <span class="card-code">#042</span>
+              <span class="card-title">第四十二章　律峰來人</span>
+            </div>
+            <span class="card-words">4,446字</span>
+          </a>
+          <a href="chapters/043.html" class="chapter-card" data-title="第四十三章　築基" data-code="043" data-num="43">
+            <div class="card-main">
+              <span class="card-code">#043</span>
+              <span class="card-title">第四十三章　築基</span>
+            </div>
+            <span class="card-words">4,441字</span>
+          </a>
+          <a href="chapters/044.html" class="chapter-card" data-title="第四十四章　孫長庚" data-code="044" data-num="44">
+            <div class="card-main">
+              <span class="card-code">#044</span>
+              <span class="card-title">第四十四章　孫長庚</span>
+            </div>
+            <span class="card-words">4,475字</span>
+          </a>
+          <a href="chapters/045.html" class="chapter-card" data-title="第四十五章　內門路" data-code="045" data-num="45">
+            <div class="card-main">
+              <span class="card-code">#045</span>
+              <span class="card-title">第四十五章　內門路</span>
+            </div>
+            <span class="card-words">4,611字</span>
+          </a>
+          <a href="chapters/046.html" class="chapter-card" data-title="第四十六章　沉燈澤" data-code="046" data-num="46">
+            <div class="card-main">
+              <span class="card-code">#046</span>
+              <span class="card-title">第四十六章　沉燈澤</span>
+            </div>
+            <span class="card-words">4,517字</span>
+          </a>
+          <a href="chapters/047.html" class="chapter-card" data-title="第四十七章　澤底" data-code="047" data-num="47">
+            <div class="card-main">
+              <span class="card-code">#047</span>
+              <span class="card-title">第四十七章　澤底</span>
+            </div>
+            <span class="card-words">4,452字</span>
+          </a>
+          <a href="chapters/048.html" class="chapter-card" data-title="第四十八章　燈選" data-code="048" data-num="48">
+            <div class="card-main">
+              <span class="card-code">#048</span>
+              <span class="card-title">第四十八章　燈選</span>
+            </div>
+            <span class="card-words">4,509字</span>
+          </a>
+          <a href="chapters/049.html" class="chapter-card" data-title="第四十九章　補基" data-code="049" data-num="49">
+            <div class="card-main">
+              <span class="card-code">#049</span>
+              <span class="card-title">第四十九章　補基</span>
+            </div>
+            <span class="card-words">4,468字</span>
+          </a>
+          <a href="chapters/050.html" class="chapter-card" data-title="第五十章　天燈鏡" data-code="050" data-num="50">
+            <div class="card-main">
+              <span class="card-code">#050</span>
+              <span class="card-title">第五十章　天燈鏡</span>
+            </div>
+            <span class="card-words">4,454字</span>
+          </a>
+          <a href="chapters/051.html" class="chapter-card" data-title="第五十一章　厲寒舟" data-code="051" data-num="51">
+            <div class="card-main">
+              <span class="card-code">#051</span>
+              <span class="card-title">第五十一章　厲寒舟</span>
+            </div>
+            <span class="card-words">4,285字</span>
+          </a>
+          <a href="chapters/052.html" class="chapter-card" data-title="第五十二章　冷鐵衣" data-code="052" data-num="52">
+            <div class="card-main">
+              <span class="card-code">#052</span>
+              <span class="card-title">第五十二章　冷鐵衣</span>
+            </div>
+            <span class="card-words">4,291字</span>
+          </a>
+          <a href="chapters/053.html" class="chapter-card" data-title="第五十三章　霜焰" data-code="053" data-num="53">
+            <div class="card-main">
+              <span class="card-code">#053</span>
+              <span class="card-title">第五十三章　霜焰</span>
+            </div>
+            <span class="card-words">4,250字</span>
+          </a>
+          <a href="chapters/054.html" class="chapter-card" data-title="第五十四章　聞人越" data-code="054" data-num="54">
+            <div class="card-main">
+              <span class="card-code">#054</span>
+              <span class="card-title">第五十四章　聞人越</span>
+            </div>
+            <span class="card-words">4,292字</span>
+          </a>
+          <a href="chapters/055.html" class="chapter-card" data-title="第五十五章　大典" data-code="055" data-num="55">
+            <div class="card-main">
+              <span class="card-code">#055</span>
+              <span class="card-title">第五十五章　大典</span>
+            </div>
+            <span class="card-words">4,254字</span>
+          </a>
+          <a href="chapters/056.html" class="chapter-card" data-title="第五十六章　灰現" data-code="056" data-num="56">
+            <div class="card-main">
+              <span class="card-code">#056</span>
+              <span class="card-title">第五十六章　灰現</span>
+            </div>
+            <span class="card-words">4,278字</span>
+          </a>
+          <a href="chapters/057.html" class="chapter-card" data-title="第五十七章　斬衣" data-code="057" data-num="57">
+            <div class="card-main">
+              <span class="card-code">#057</span>
+              <span class="card-title">第五十七章　斬衣</span>
+            </div>
+            <span class="card-words">4,258字</span>
+          </a>
+          <a href="chapters/058.html" class="chapter-card" data-title="第五十八章　一釘" data-code="058" data-num="58">
+            <div class="card-main">
+              <span class="card-code">#058</span>
+              <span class="card-title">第五十八章　一釘</span>
+            </div>
+            <span class="card-words">4,251字</span>
+          </a>
+          <a href="chapters/059.html" class="chapter-card" data-title="第五十九章　叛名" data-code="059" data-num="59">
+            <div class="card-main">
+              <span class="card-code">#059</span>
+              <span class="card-title">第五十九章　叛名</span>
+            </div>
+            <span class="card-words">4,263字</span>
+          </a>
+          <a href="chapters/060.html" class="chapter-card" data-title="第六十章　燈舟" data-code="060" data-num="60">
+            <div class="card-main">
+              <span class="card-code">#060</span>
+              <span class="card-title">第六十章　燈舟</span>
+            </div>
+            <span class="card-words">4,284字</span>
+          </a>
+          <a href="chapters/061.html" class="chapter-card" data-title="第六十一章　炎墟" data-code="061" data-num="61">
+            <div class="card-main">
+              <span class="card-code">#061</span>
+              <span class="card-title">第六十一章　炎墟</span>
+            </div>
+            <span class="card-words">4,266字</span>
+          </a>
+          <a href="chapters/062.html" class="chapter-card" data-title="第六十二章　礦難" data-code="062" data-num="62">
+            <div class="card-main">
+              <span class="card-code">#062</span>
+              <span class="card-title">第六十二章　礦難</span>
+            </div>
+            <span class="card-words">4,258字</span>
+          </a>
+          <a href="chapters/063.html" class="chapter-card" data-title="第六十三章　血市名" data-code="063" data-num="63">
+            <div class="card-main">
+              <span class="card-code">#063</span>
+              <span class="card-title">第六十三章　血市名</span>
+            </div>
+            <span class="card-words">4,428字</span>
+          </a>
+          <a href="chapters/064.html" class="chapter-card" data-title="第六十四章　灰先生" data-code="064" data-num="64">
+            <div class="card-main">
+              <span class="card-code">#064</span>
+              <span class="card-title">第六十四章　灰先生</span>
+            </div>
+            <span class="card-words">4,405字</span>
+          </a>
+          <a href="chapters/065.html" class="chapter-card" data-title="第六十五章　地底" data-code="065" data-num="65">
+            <div class="card-main">
+              <span class="card-code">#065</span>
+              <span class="card-title">第六十五章　地底</span>
+            </div>
+            <span class="card-words">4,384字</span>
+          </a>
+          <a href="chapters/066.html" class="chapter-card" data-title="第六十六章　火龍帖" data-code="066" data-num="66">
+            <div class="card-main">
+              <span class="card-code">#066</span>
+              <span class="card-title">第六十六章　火龍帖</span>
+            </div>
+            <span class="card-words">4,380字</span>
+          </a>
+          <a href="chapters/067.html" class="chapter-card" data-title="第六十七章　賭釘" data-code="067" data-num="67">
+            <div class="card-main">
+              <span class="card-code">#067</span>
+              <span class="card-title">第六十七章　賭釘</span>
+            </div>
+            <span class="card-words">4,400字</span>
+          </a>
+          <a href="chapters/068.html" class="chapter-card" data-title="第六十八章　十日" data-code="068" data-num="68">
+            <div class="card-main">
+              <span class="card-code">#068</span>
+              <span class="card-title">第六十八章　十日</span>
+            </div>
+            <span class="card-words">4,259字</span>
+          </a>
+          <a href="chapters/069.html" class="chapter-card" data-title="第六十九章　拍賣" data-code="069" data-num="69">
+            <div class="card-main">
+              <span class="card-code">#069</span>
+              <span class="card-title">第六十九章　拍賣</span>
+            </div>
+            <span class="card-words">4,264字</span>
+          </a>
+          <a href="chapters/070.html" class="chapter-card" data-title="第七十章　裂市" data-code="070" data-num="70">
+            <div class="card-main">
+              <span class="card-code">#070</span>
+              <span class="card-title">第七十章　裂市</span>
+            </div>
+            <span class="card-words">4,270字</span>
+          </a>
+          <a href="chapters/071.html" class="chapter-card" data-title="第七十一章　火龍谷" data-code="071" data-num="71">
+            <div class="card-main">
+              <span class="card-code">#071</span>
+              <span class="card-title">第七十一章　火龍谷</span>
+            </div>
+            <span class="card-words">4,365字</span>
+          </a>
+          <a href="chapters/072.html" class="chapter-card" data-title="第七十二章　藏檔" data-code="072" data-num="72">
+            <div class="card-main">
+              <span class="card-code">#072</span>
+              <span class="card-title">第七十二章　藏檔</span>
+            </div>
+            <span class="card-words">4,347字</span>
+          </a>
+          <a href="chapters/073.html" class="chapter-card" data-title="第七十三章　空洞" data-code="073" data-num="73">
+            <div class="card-main">
+              <span class="card-code">#073</span>
+              <span class="card-title">第七十三章　空洞</span>
+            </div>
+            <span class="card-words">4,326字</span>
+          </a>
+          <a href="chapters/074.html" class="chapter-card" data-title="第七十四章　起意" data-code="074" data-num="74">
+            <div class="card-main">
+              <span class="card-code">#074</span>
+              <span class="card-title">第七十四章　起意</span>
+            </div>
+            <span class="card-words">4,321字</span>
+          </a>
+          <a href="chapters/075.html" class="chapter-card" data-title="第七十五章　燈奴" data-code="075" data-num="75">
+            <div class="card-main">
+              <span class="card-code">#075</span>
+              <span class="card-title">第七十五章　燈奴</span>
+            </div>
+            <span class="card-words">4,332字</span>
+          </a>
+          <a href="chapters/076.html" class="chapter-card" data-title="第七十六章　赤眉" data-code="076" data-num="76">
+            <div class="card-main">
+              <span class="card-code">#076</span>
+              <span class="card-title">第七十六章　赤眉</span>
+            </div>
+            <span class="card-words">4,332字</span>
+          </a>
+          <a href="chapters/077.html" class="chapter-card" data-title="第七十七章　第四" data-code="077" data-num="77">
+            <div class="card-main">
+              <span class="card-code">#077</span>
+              <span class="card-title">第七十七章　第四</span>
+            </div>
+            <span class="card-words">4,353字</span>
+          </a>
+          <a href="chapters/078.html" class="chapter-card" data-title="第七十八章　傷愈" data-code="078" data-num="78">
+            <div class="card-main">
+              <span class="card-code">#078</span>
+              <span class="card-title">第七十八章　傷愈</span>
+            </div>
+            <span class="card-words">4,320字</span>
+          </a>
+          <a href="chapters/079.html" class="chapter-card" data-title="第七十九章　南訊" data-code="079" data-num="79">
+            <div class="card-main">
+              <span class="card-code">#079</span>
+              <span class="card-title">第七十九章　南訊</span>
+            </div>
+            <span class="card-words">4,311字</span>
+          </a>
+          <a href="chapters/080.html" class="chapter-card" data-title="第八十章　西行" data-code="080" data-num="80">
+            <div class="card-main">
+              <span class="card-code">#080</span>
+              <span class="card-title">第八十章　西行</span>
+            </div>
+            <span class="card-words">4,341字</span>
+          </a>
+          <a href="chapters/081.html" class="chapter-card" data-title="第八十一章　骨原" data-code="081" data-num="81">
+            <div class="card-main">
+              <span class="card-code">#081</span>
+              <span class="card-title">第八十一章　骨原</span>
+            </div>
+            <span class="card-words">4,324字</span>
+          </a>
+          <a href="chapters/082.html" class="chapter-card" data-title="第八十二章　枯燈" data-code="082" data-num="82">
+            <div class="card-main">
+              <span class="card-code">#082</span>
+              <span class="card-title">第八十二章　枯燈</span>
+            </div>
+            <span class="card-words">4,310字</span>
+          </a>
+          <a href="chapters/083.html" class="chapter-card" data-title="第八十三章　慈航" data-code="083" data-num="83">
+            <div class="card-main">
+              <span class="card-code">#083</span>
+              <span class="card-title">第八十三章　慈航</span>
+            </div>
+            <span class="card-words">4,299字</span>
+          </a>
+          <a href="chapters/084.html" class="chapter-card" data-title="第八十四章　燼種" data-code="084" data-num="84">
+            <div class="card-main">
+              <span class="card-code">#084</span>
+              <span class="card-title">第八十四章　燼種</span>
+            </div>
+            <span class="card-words">4,343字</span>
+          </a>
+          <a href="chapters/085.html" class="chapter-card" data-title="第八十五章　西信" data-code="085" data-num="85">
+            <div class="card-main">
+              <span class="card-code">#085</span>
+              <span class="card-title">第八十五章　西信</span>
+            </div>
+            <span class="card-words">4,376字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-3" data-vol-num="3">
+        <div class="volume-header">
+          <h3>第三卷　赤霄血市 <small>（第 86–130 章）</small></h3>
+          <span class="volume-desc">黑水血市・火龍煉骨・結丹逆鱗</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/086.html" class="chapter-card" data-title="第八十六章　熄天" data-code="086" data-num="86">
+            <div class="card-main">
+              <span class="card-code">#086</span>
+              <span class="card-title">第八十六章　熄天</span>
+            </div>
+            <span class="card-words">4,276字</span>
+          </a>
+          <a href="chapters/087.html" class="chapter-card" data-title="第八十七章　燼經" data-code="087" data-num="87">
+            <div class="card-main">
+              <span class="card-code">#087</span>
+              <span class="card-title">第八十七章　燼經</span>
+            </div>
+            <span class="card-words">4,316字</span>
+          </a>
+          <a href="chapters/088.html" class="chapter-card" data-title="第八十八章　慈航再" data-code="088" data-num="88">
+            <div class="card-main">
+              <span class="card-code">#088</span>
+              <span class="card-title">第八十八章　慈航再</span>
+            </div>
+            <span class="card-words">4,272字</span>
+          </a>
+          <a href="chapters/089.html" class="chapter-card" data-title="第八十九章　北上" data-code="089" data-num="89">
+            <div class="card-main">
+              <span class="card-code">#089</span>
+              <span class="card-title">第八十九章　北上</span>
+            </div>
+            <span class="card-words">4,266字</span>
+          </a>
+          <a href="chapters/090.html" class="chapter-card" data-title="第九十章　驛館" data-code="090" data-num="90">
+            <div class="card-main">
+              <span class="card-code">#090</span>
+              <span class="card-title">第九十章　驛館</span>
+            </div>
+            <span class="card-words">4,272字</span>
+          </a>
+          <a href="chapters/091.html" class="chapter-card" data-title="第九十一章　玄霜" data-code="091" data-num="91">
+            <div class="card-main">
+              <span class="card-code">#091</span>
+              <span class="card-title">第九十一章　玄霜</span>
+            </div>
+            <span class="card-words">4,272字</span>
+          </a>
+          <a href="chapters/092.html" class="chapter-card" data-title="第九十二章　冰宮" data-code="092" data-num="92">
+            <div class="card-main">
+              <span class="card-code">#092</span>
+              <span class="card-title">第九十二章　冰宮</span>
+            </div>
+            <span class="card-words">4,243字</span>
+          </a>
+          <a href="chapters/093.html" class="chapter-card" data-title="第九十三章　奪燼" data-code="093" data-num="93">
+            <div class="card-main">
+              <span class="card-code">#093</span>
+              <span class="card-title">第九十三章　奪燼</span>
+            </div>
+            <span class="card-words">4,235字</span>
+          </a>
+          <a href="chapters/094.html" class="chapter-card" data-title="第九十四章　寒燈" data-code="094" data-num="94">
+            <div class="card-main">
+              <span class="card-code">#094</span>
+              <span class="card-title">第九十四章　寒燈</span>
+            </div>
+            <span class="card-words">4,291字</span>
+          </a>
+          <a href="chapters/095.html" class="chapter-card" data-title="第九十五章　薛無晦" data-code="095" data-num="95">
+            <div class="card-main">
+              <span class="card-code">#095</span>
+              <span class="card-title">第九十五章　薛無晦</span>
+            </div>
+            <span class="card-words">4,301字</span>
+          </a>
+          <a href="chapters/096.html" class="chapter-card" data-title="第九十六章　分路" data-code="096" data-num="96">
+            <div class="card-main">
+              <span class="card-code">#096</span>
+              <span class="card-title">第九十六章　分路</span>
+            </div>
+            <span class="card-words">4,240字</span>
+          </a>
+          <a href="chapters/097.html" class="chapter-card" data-title="第九十七章　天樞" data-code="097" data-num="97">
+            <div class="card-main">
+              <span class="card-code">#097</span>
+              <span class="card-title">第九十七章　天樞</span>
+            </div>
+            <span class="card-words">4,265字</span>
+          </a>
+          <a href="chapters/098.html" class="chapter-card" data-title="第九十八章　預選" data-code="098" data-num="98">
+            <div class="card-main">
+              <span class="card-code">#098</span>
+              <span class="card-title">第九十八章　預選</span>
+            </div>
+            <span class="card-words">4,251字</span>
+          </a>
+          <a href="chapters/099.html" class="chapter-card" data-title="第九十九章　身世" data-code="099" data-num="99">
+            <div class="card-main">
+              <span class="card-code">#099</span>
+              <span class="card-title">第九十九章　身世</span>
+            </div>
+            <span class="card-words">4,282字</span>
+          </a>
+          <a href="chapters/100.html" class="chapter-card" data-title="第一百章　燈窟" data-code="100" data-num="100">
+            <div class="card-main">
+              <span class="card-code">#100</span>
+              <span class="card-title">第一百章　燈窟</span>
+            </div>
+            <span class="card-words">4,370字</span>
+          </a>
+          <a href="chapters/101.html" class="chapter-card" data-title="第一百零一章　鼓再響" data-code="101" data-num="101">
+            <div class="card-main">
+              <span class="card-code">#101</span>
+              <span class="card-title">第一百零一章　鼓再響</span>
+            </div>
+            <span class="card-words">4,379字</span>
+          </a>
+          <a href="chapters/102.html" class="chapter-card" data-title="第一百零二章　趙鳴珂" data-code="102" data-num="102">
+            <div class="card-main">
+              <span class="card-code">#102</span>
+              <span class="card-title">第一百零二章　趙鳴珂</span>
+            </div>
+            <span class="card-words">4,323字</span>
+          </a>
+          <a href="chapters/103.html" class="chapter-card" data-title="第一百零三章　八文生息" data-code="103" data-num="103">
+            <div class="card-main">
+              <span class="card-code">#103</span>
+              <span class="card-title">第一百零三章　八文生息</span>
+            </div>
+            <span class="card-words">4,286字</span>
+          </a>
+          <a href="chapters/104.html" class="chapter-card" data-title="第一百零四章　疑焰" data-code="104" data-num="104">
+            <div class="card-main">
+              <span class="card-code">#104</span>
+              <span class="card-title">第一百零四章　疑焰</span>
+            </div>
+            <span class="card-words">4,286字</span>
+          </a>
+          <a href="chapters/105.html" class="chapter-card" data-title="第一百零五章　燈河夜" data-code="105" data-num="105">
+            <div class="card-main">
+              <span class="card-code">#105</span>
+              <span class="card-title">第一百零五章　燈河夜</span>
+            </div>
+            <span class="card-words">4,322字</span>
+          </a>
+          <a href="chapters/106.html" class="chapter-card" data-title="第一百零六章　夜戰" data-code="106" data-num="106">
+            <div class="card-main">
+              <span class="card-code">#106</span>
+              <span class="card-title">第一百零六章　夜戰</span>
+            </div>
+            <span class="card-words">4,371字</span>
+          </a>
+          <a href="chapters/107.html" class="chapter-card" data-title="第一百零七章　北郭" data-code="107" data-num="107">
+            <div class="card-main">
+              <span class="card-code">#107</span>
+              <span class="card-title">第一百零七章　北郭</span>
+            </div>
+            <span class="card-words">4,293字</span>
+          </a>
+          <a href="chapters/108.html" class="chapter-card" data-title="第一百零八章　八強籤" data-code="108" data-num="108">
+            <div class="card-main">
+              <span class="card-code">#108</span>
+              <span class="card-title">第一百零八章　八強籤</span>
+            </div>
+            <span class="card-words">4,434字</span>
+          </a>
+          <a href="chapters/109.html" class="chapter-card" data-title="第一百零九章　三刀" data-code="109" data-num="109">
+            <div class="card-main">
+              <span class="card-code">#109</span>
+              <span class="card-title">第一百零九章　三刀</span>
+            </div>
+            <span class="card-words">4,319字</span>
+          </a>
+          <a href="chapters/110.html" class="chapter-card" data-title="第一百一十章　餘燼胚" data-code="110" data-num="110">
+            <div class="card-main">
+              <span class="card-code">#110</span>
+              <span class="card-title">第一百一十章　餘燼胚</span>
+            </div>
+            <span class="card-words">4,419字</span>
+          </a>
+          <a href="chapters/111.html" class="chapter-card" data-title="第一百一十一章　暗渠" data-code="111" data-num="111">
+            <div class="card-main">
+              <span class="card-code">#111</span>
+              <span class="card-title">第一百一十一章　暗渠</span>
+            </div>
+            <span class="card-words">4,306字</span>
+          </a>
+          <a href="chapters/112.html" class="chapter-card" data-title="第一百一十二章　結丹門" data-code="112" data-num="112">
+            <div class="card-main">
+              <span class="card-code">#112</span>
+              <span class="card-title">第一百一十二章　結丹門</span>
+            </div>
+            <span class="card-words">4,285字</span>
+          </a>
+          <a href="chapters/113.html" class="chapter-card" data-title="第一百一十三章　特邀" data-code="113" data-num="113">
+            <div class="card-main">
+              <span class="card-code">#113</span>
+              <span class="card-title">第一百一十三章　特邀</span>
+            </div>
+            <span class="card-words">4,352字</span>
+          </a>
+          <a href="chapters/114.html" class="chapter-card" data-title="第一百一十四章　特戰上" data-code="114" data-num="114">
+            <div class="card-main">
+              <span class="card-code">#114</span>
+              <span class="card-title">第一百一十四章　特戰上</span>
+            </div>
+            <span class="card-words">4,324字</span>
+          </a>
+          <a href="chapters/115.html" class="chapter-card" data-title="第一百一十五章　特戰中" data-code="115" data-num="115">
+            <div class="card-main">
+              <span class="card-code">#115</span>
+              <span class="card-title">第一百一十五章　特戰中</span>
+            </div>
+            <span class="card-words">4,329字</span>
+          </a>
+          <a href="chapters/116.html" class="chapter-card" data-title="第一百一十六章　特戰末" data-code="116" data-num="116">
+            <div class="card-main">
+              <span class="card-code">#116</span>
+              <span class="card-title">第一百一十六章　特戰末</span>
+            </div>
+            <span class="card-words">4,258字</span>
+          </a>
+          <a href="chapters/117.html" class="chapter-card" data-title="第一百一十七章　長明殿" data-code="117" data-num="117">
+            <div class="card-main">
+              <span class="card-code">#117</span>
+              <span class="card-title">第一百一十七章　長明殿</span>
+            </div>
+            <span class="card-words">4,258字</span>
+          </a>
+          <a href="chapters/118.html" class="chapter-card" data-title="第一百一十八章　滅燼將" data-code="118" data-num="118">
+            <div class="card-main">
+              <span class="card-code">#118</span>
+              <span class="card-title">第一百一十八章　滅燼將</span>
+            </div>
+            <span class="card-words">4,350字</span>
+          </a>
+          <a href="chapters/119.html" class="chapter-card" data-title="第一百一十九章　深探" data-code="119" data-num="119">
+            <div class="card-main">
+              <span class="card-code">#119</span>
+              <span class="card-title">第一百一十九章　深探</span>
+            </div>
+            <span class="card-words">4,336字</span>
+          </a>
+          <a href="chapters/120.html" class="chapter-card" data-title="第一百二十章　公之於會" data-code="120" data-num="120">
+            <div class="card-main">
+              <span class="card-code">#120</span>
+              <span class="card-title">第一百二十章　公之於會</span>
+            </div>
+            <span class="card-words">4,280字</span>
+          </a>
+          <a href="chapters/121.html" class="chapter-card" data-title="第一百二十一章　封城" data-code="121" data-num="121">
+            <div class="card-main">
+              <span class="card-code">#121</span>
+              <span class="card-title">第一百二十一章　封城</span>
+            </div>
+            <span class="card-words">4,346字</span>
+          </a>
+          <a href="chapters/122.html" class="chapter-card" data-title="第一百二十二章　巷戰" data-code="122" data-num="122">
+            <div class="card-main">
+              <span class="card-code">#122</span>
+              <span class="card-title">第一百二十二章　巷戰</span>
+            </div>
+            <span class="card-words">4,252字</span>
+          </a>
+          <a href="chapters/123.html" class="chapter-card" data-title="第一百二十三章　女聲" data-code="123" data-num="123">
+            <div class="card-main">
+              <span class="card-code">#123</span>
+              <span class="card-title">第一百二十三章　女聲</span>
+            </div>
+            <span class="card-words">4,310字</span>
+          </a>
+          <a href="chapters/124.html" class="chapter-card" data-title="第一百二十四章　中期" data-code="124" data-num="124">
+            <div class="card-main">
+              <span class="card-code">#124</span>
+              <span class="card-title">第一百二十四章　中期</span>
+            </div>
+            <span class="card-words">4,300字</span>
+          </a>
+          <a href="chapters/125.html" class="chapter-card" data-title="第一百二十五章　哭牆" data-code="125" data-num="125">
+            <div class="card-main">
+              <span class="card-code">#125</span>
+              <span class="card-title">第一百二十五章　哭牆</span>
+            </div>
+            <span class="card-words">4,262字</span>
+          </a>
+          <a href="chapters/126.html" class="chapter-card" data-title="第一百二十六章　盟雛" data-code="126" data-num="126">
+            <div class="card-main">
+              <span class="card-code">#126</span>
+              <span class="card-title">第一百二十六章　盟雛</span>
+            </div>
+            <span class="card-words">4,298字</span>
+          </a>
+          <a href="chapters/127.html" class="chapter-card" data-title="第一百二十七章　膝" data-code="127" data-num="127">
+            <div class="card-main">
+              <span class="card-code">#127</span>
+              <span class="card-title">第一百二十七章　膝</span>
+            </div>
+            <span class="card-words">4,357字</span>
+          </a>
+          <a href="chapters/128.html" class="chapter-card" data-title="第一百二十八章　趙家末" data-code="128" data-num="128">
+            <div class="card-main">
+              <span class="card-code">#128</span>
+              <span class="card-title">第一百二十八章　趙家末</span>
+            </div>
+            <span class="card-words">4,253字</span>
+          </a>
+          <a href="chapters/129.html" class="chapter-card" data-title="第一百二十九章　第四影" data-code="129" data-num="129">
+            <div class="card-main">
+              <span class="card-code">#129</span>
+              <span class="card-title">第一百二十九章　第四影</span>
+            </div>
+            <span class="card-words">4,350字</span>
+          </a>
+          <a href="chapters/130.html" class="chapter-card" data-title="第一百三十章　靜養" data-code="130" data-num="130">
+            <div class="card-main">
+              <span class="card-code">#130</span>
+              <span class="card-title">第一百三十章　靜養</span>
+            </div>
+            <span class="card-words">4,260字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-4" data-vol-num="4">
+        <div class="volume-header">
+          <h3>第四卷　白骨無燈 <small>（第 131–175 章）</small></h3>
+          <span class="volume-desc">荒原白骨・古燈遺陣・揭示身世</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/131.html" class="chapter-card" data-title="第一百三十一章　髮絲" data-code="131" data-num="131">
+            <div class="card-main">
+              <span class="card-code">#131</span>
+              <span class="card-title">第一百三十一章　髮絲</span>
+            </div>
+            <span class="card-words">4,323字</span>
+          </a>
+          <a href="chapters/132.html" class="chapter-card" data-title="第一百三十二章　薪與人" data-code="132" data-num="132">
+            <div class="card-main">
+              <span class="card-code">#132</span>
+              <span class="card-title">第一百三十二章　薪與人</span>
+            </div>
+            <span class="card-words">4,317字</span>
+          </a>
+          <a href="chapters/133.html" class="chapter-card" data-title="第一百三十三章　封禁約" data-code="133" data-num="133">
+            <div class="card-main">
+              <span class="card-code">#133</span>
+              <span class="card-title">第一百三十三章　封禁約</span>
+            </div>
+            <span class="card-words">4,346字</span>
+          </a>
+          <a href="chapters/134.html" class="chapter-card" data-title="第一百三十四章　後期" data-code="134" data-num="134">
+            <div class="card-main">
+              <span class="card-code">#134</span>
+              <span class="card-title">第一百三十四章　後期</span>
+            </div>
+            <span class="card-words">4,345字</span>
+          </a>
+          <a href="chapters/135.html" class="chapter-card" data-title="第一百三十五章　稱賬" data-code="135" data-num="135">
+            <div class="card-main">
+              <span class="card-code">#135</span>
+              <span class="card-title">第一百三十五章　稱賬</span>
+            </div>
+            <span class="card-words">4,306字</span>
+          </a>
+          <a href="chapters/136.html" class="chapter-card" data-title="第一百三十六章　兒" data-code="136" data-num="136">
+            <div class="card-main">
+              <span class="card-code">#136</span>
+              <span class="card-title">第一百三十六章　兒</span>
+            </div>
+            <span class="card-words">4,350字</span>
+          </a>
+          <a href="chapters/137.html" class="chapter-card" data-title="第一百三十七章　罰" data-code="137" data-num="137">
+            <div class="card-main">
+              <span class="card-code">#137</span>
+              <span class="card-title">第一百三十七章　罰</span>
+            </div>
+            <span class="card-words">4,279字</span>
+          </a>
+          <a href="chapters/138.html" class="chapter-card" data-title="第一百三十八章　撕" data-code="138" data-num="138">
+            <div class="card-main">
+              <span class="card-code">#138</span>
+              <span class="card-title">第一百三十八章　撕</span>
+            </div>
+            <span class="card-words">4,301字</span>
+          </a>
+          <a href="chapters/139.html" class="chapter-card" data-title="第一百三十九章　圓滿前" data-code="139" data-num="139">
+            <div class="card-main">
+              <span class="card-code">#139</span>
+              <span class="card-title">第一百三十九章　圓滿前</span>
+            </div>
+            <span class="card-words">4,254字</span>
+          </a>
+          <a href="chapters/140.html" class="chapter-card" data-title="第一百四十章　圓滿" data-code="140" data-num="140">
+            <div class="card-main">
+              <span class="card-code">#140</span>
+              <span class="card-title">第一百四十章　圓滿</span>
+            </div>
+            <span class="card-words">4,314字</span>
+          </a>
+          <a href="chapters/141.html" class="chapter-card" data-title="第一百四十一章　青嵐符" data-code="141" data-num="141">
+            <div class="card-main">
+              <span class="card-code">#141</span>
+              <span class="card-title">第一百四十一章　青嵐符</span>
+            </div>
+            <span class="card-words">4,318字</span>
+          </a>
+          <a href="chapters/142.html" class="chapter-card" data-title="第一百四十二章　調虎不成" data-code="142" data-num="142">
+            <div class="card-main">
+              <span class="card-code">#142</span>
+              <span class="card-title">第一百四十二章　調虎不成</span>
+            </div>
+            <span class="card-words">4,327字</span>
+          </a>
+          <a href="chapters/143.html" class="chapter-card" data-title="第一百四十三章　元嬰兆" data-code="143" data-num="143">
+            <div class="card-main">
+              <span class="card-code">#143</span>
+              <span class="card-title">第一百四十三章　元嬰兆</span>
+            </div>
+            <span class="card-words">4,306字</span>
+          </a>
+          <a href="chapters/144.html" class="chapter-card" data-title="第一百四十四章　燈靈手" data-code="144" data-num="144">
+            <div class="card-main">
+              <span class="card-code">#144</span>
+              <span class="card-title">第一百四十四章　燈靈手</span>
+            </div>
+            <span class="card-words">4,285字</span>
+          </a>
+          <a href="chapters/145.html" class="chapter-card" data-title="第一百四十五章　辨" data-code="145" data-num="145">
+            <div class="card-main">
+              <span class="card-code">#145</span>
+              <span class="card-title">第一百四十五章　辨</span>
+            </div>
+            <span class="card-words">4,317字</span>
+          </a>
+          <a href="chapters/146.html" class="chapter-card" data-title="第一百四十六章　滅燼令" data-code="146" data-num="146">
+            <div class="card-main">
+              <span class="card-code">#146</span>
+              <span class="card-title">第一百四十六章　滅燼令</span>
+            </div>
+            <span class="card-words">4,326字</span>
+          </a>
+          <a href="chapters/147.html" class="chapter-card" data-title="第一百四十七章　兩線" data-code="147" data-num="147">
+            <div class="card-main">
+              <span class="card-code">#147</span>
+              <span class="card-title">第一百四十七章　兩線</span>
+            </div>
+            <span class="card-words">4,363字</span>
+          </a>
+          <a href="chapters/148.html" class="chapter-card" data-title="第一百四十八章　閘" data-code="148" data-num="148">
+            <div class="card-main">
+              <span class="card-code">#148</span>
+              <span class="card-title">第一百四十八章　閘</span>
+            </div>
+            <span class="card-words">4,261字</span>
+          </a>
+          <a href="chapters/149.html" class="chapter-card" data-title="第一百四十九章　簿心" data-code="149" data-num="149">
+            <div class="card-main">
+              <span class="card-code">#149</span>
+              <span class="card-title">第一百四十九章　簿心</span>
+            </div>
+            <span class="card-words">4,290字</span>
+          </a>
+          <a href="chapters/150.html" class="chapter-card" data-title="第一百五十章　撤" data-code="150" data-num="150">
+            <div class="card-main">
+              <span class="card-code">#150</span>
+              <span class="card-title">第一百五十章　撤</span>
+            </div>
+            <span class="card-words">4,256字</span>
+          </a>
+          <a href="chapters/151.html" class="chapter-card" data-title="第一百五十一章　談判帖" data-code="151" data-num="151">
+            <div class="card-main">
+              <span class="card-code">#151</span>
+              <span class="card-title">第一百五十一章　談判帖</span>
+            </div>
+            <span class="card-words">4,066字</span>
+          </a>
+          <a href="chapters/152.html" class="chapter-card" data-title="第一百五十二章　父眼" data-code="152" data-num="152">
+            <div class="card-main">
+              <span class="card-code">#152</span>
+              <span class="card-title">第一百五十二章　父眼</span>
+            </div>
+            <span class="card-words">4,122字</span>
+          </a>
+          <a href="chapters/153.html" class="chapter-card" data-title="第一百五十三章　青嵐血" data-code="153" data-num="153">
+            <div class="card-main">
+              <span class="card-code">#153</span>
+              <span class="card-title">第一百五十三章　青嵐血</span>
+            </div>
+            <span class="card-words">4,115字</span>
+          </a>
+          <a href="chapters/154.html" class="chapter-card" data-title="第一百五十四章　石裂" data-code="154" data-num="154">
+            <div class="card-main">
+              <span class="card-code">#154</span>
+              <span class="card-title">第一百五十四章　石裂</span>
+            </div>
+            <span class="card-words">4,093字</span>
+          </a>
+          <a href="chapters/155.html" class="chapter-card" data-title="第一百五十五章　中期嬰" data-code="155" data-num="155">
+            <div class="card-main">
+              <span class="card-code">#155</span>
+              <span class="card-title">第一百五十五章　中期嬰</span>
+            </div>
+            <span class="card-words">4,122字</span>
+          </a>
+          <a href="chapters/156.html" class="chapter-card" data-title="第一百五十六章　永失" data-code="156" data-num="156">
+            <div class="card-main">
+              <span class="card-code">#156</span>
+              <span class="card-title">第一百五十六章　永失</span>
+            </div>
+            <span class="card-words">4,096字</span>
+          </a>
+          <a href="chapters/157.html" class="chapter-card" data-title="第一百五十七章　耕田" data-code="157" data-num="157">
+            <div class="card-main">
+              <span class="card-code">#157</span>
+              <span class="card-title">第一百五十七章　耕田</span>
+            </div>
+            <span class="card-words">4,122字</span>
+          </a>
+          <a href="chapters/158.html" class="chapter-card" data-title="第一百五十八章　登闕否" data-code="158" data-num="158">
+            <div class="card-main">
+              <span class="card-code">#158</span>
+              <span class="card-title">第一百五十八章　登闕否</span>
+            </div>
+            <span class="card-words">4,110字</span>
+          </a>
+          <a href="chapters/159.html" class="chapter-card" data-title="第一百五十九章　數據" data-code="159" data-num="159">
+            <div class="card-main">
+              <span class="card-code">#159</span>
+              <span class="card-title">第一百五十九章　數據</span>
+            </div>
+            <span class="card-words">4,071字</span>
+          </a>
+          <a href="chapters/160.html" class="chapter-card" data-title="第一百六十章　婆書" data-code="160" data-num="160">
+            <div class="card-main">
+              <span class="card-code">#160</span>
+              <span class="card-title">第一百六十章　婆書</span>
+            </div>
+            <span class="card-words">4,138字</span>
+          </a>
+          <a href="chapters/161.html" class="chapter-card" data-title="第一百六十一章　撕闕" data-code="161" data-num="161">
+            <div class="card-main">
+              <span class="card-code">#161</span>
+              <span class="card-title">第一百六十一章　撕闕</span>
+            </div>
+            <span class="card-words">4,141字</span>
+          </a>
+          <a href="chapters/162.html" class="chapter-card" data-title="第一百六十二章　看見" data-code="162" data-num="162">
+            <div class="card-main">
+              <span class="card-code">#162</span>
+              <span class="card-title">第一百六十二章　看見</span>
+            </div>
+            <span class="card-words">4,101字</span>
+          </a>
+          <a href="chapters/163.html" class="chapter-card" data-title="第一百六十三章　十二頁" data-code="163" data-num="163">
+            <div class="card-main">
+              <span class="card-code">#163</span>
+              <span class="card-title">第一百六十三章　十二頁</span>
+            </div>
+            <span class="card-words">4,110字</span>
+          </a>
+          <a href="chapters/164.html" class="chapter-card" data-title="第一百六十四章　後期嬰" data-code="164" data-num="164">
+            <div class="card-main">
+              <span class="card-code">#164</span>
+              <span class="card-title">第一百六十四章　後期嬰</span>
+            </div>
+            <span class="card-words">4,105字</span>
+          </a>
+          <a href="chapters/165.html" class="chapter-card" data-title="第一百六十五章　獵灰末" data-code="165" data-num="165">
+            <div class="card-main">
+              <span class="card-code">#165</span>
+              <span class="card-title">第一百六十五章　獵灰末</span>
+            </div>
+            <span class="card-words">4,138字</span>
+          </a>
+          <a href="chapters/166.html" class="chapter-card" data-title="第一百六十六章　隱" data-code="166" data-num="166">
+            <div class="card-main">
+              <span class="card-code">#166</span>
+              <span class="card-title">第一百六十六章　隱</span>
+            </div>
+            <span class="card-words">4,093字</span>
+          </a>
+          <a href="chapters/167.html" class="chapter-card" data-title="第一百六十七章　失我潮" data-code="167" data-num="167">
+            <div class="card-main">
+              <span class="card-code">#167</span>
+              <span class="card-title">第一百六十七章　失我潮</span>
+            </div>
+            <span class="card-words">4,150字</span>
+          </a>
+          <a href="chapters/168.html" class="chapter-card" data-title="第一百六十八章　還" data-code="168" data-num="168">
+            <div class="card-main">
+              <span class="card-code">#168</span>
+              <span class="card-title">第一百六十八章　還</span>
+            </div>
+            <span class="card-words">4,116字</span>
+          </a>
+          <a href="chapters/169.html" class="chapter-card" data-title="第一百六十九章　結髮" data-code="169" data-num="169">
+            <div class="card-main">
+              <span class="card-code">#169</span>
+              <span class="card-title">第一百六十九章　結髮</span>
+            </div>
+            <span class="card-words">4,082字</span>
+          </a>
+          <a href="chapters/170.html" class="chapter-card" data-title="第一百七十章　圓滿嬰" data-code="170" data-num="170">
+            <div class="card-main">
+              <span class="card-code">#170</span>
+              <span class="card-title">第一百七十章　圓滿嬰</span>
+            </div>
+            <span class="card-words">4,102字</span>
+          </a>
+          <a href="chapters/171.html" class="chapter-card" data-title="第一百七十一章　亂律" data-code="171" data-num="171">
+            <div class="card-main">
+              <span class="card-code">#171</span>
+              <span class="card-title">第一百七十一章　亂律</span>
+            </div>
+            <span class="card-words">4,103字</span>
+          </a>
+          <a href="chapters/172.html" class="chapter-card" data-title="第一百七十二章　對賬員" data-code="172" data-num="172">
+            <div class="card-main">
+              <span class="card-code">#172</span>
+              <span class="card-title">第一百七十二章　對賬員</span>
+            </div>
+            <span class="card-words">4,119字</span>
+          </a>
+          <a href="chapters/173.html" class="chapter-card" data-title="第一百七十三章　化神兆" data-code="173" data-num="173">
+            <div class="card-main">
+              <span class="card-code">#173</span>
+              <span class="card-title">第一百七十三章　化神兆</span>
+            </div>
+            <span class="card-words">4,082字</span>
+          </a>
+          <a href="chapters/174.html" class="chapter-card" data-title="第一百七十四章　青嵐定" data-code="174" data-num="174">
+            <div class="card-main">
+              <span class="card-code">#174</span>
+              <span class="card-title">第一百七十四章　青嵐定</span>
+            </div>
+            <span class="card-words">4,073字</span>
+          </a>
+          <a href="chapters/175.html" class="chapter-card" data-title="第一百七十五章　帚" data-code="175" data-num="175">
+            <div class="card-main">
+              <span class="card-code">#175</span>
+              <span class="card-title">第一百七十五章　帚</span>
+            </div>
+            <span class="card-words">4,098字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-5" data-vol-num="5">
+        <div class="volume-header">
+          <h3>第五卷　玄冰鎖心 <small>（第 176–215 章）</small></h3>
+          <span class="volume-desc">極北冰淵・同生共死・元嬰凝印</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/176.html" class="chapter-card" data-title="第一百七十六章　請闕" data-code="176" data-num="176">
+            <div class="card-main">
+              <span class="card-code">#176</span>
+              <span class="card-title">第一百七十六章　請闕</span>
+            </div>
+            <span class="card-words">4,096字</span>
+          </a>
+          <a href="chapters/177.html" class="chapter-card" data-title="第一百七十七章　燈殼" data-code="177" data-num="177">
+            <div class="card-main">
+              <span class="card-code">#177</span>
+              <span class="card-title">第一百七十七章　燈殼</span>
+            </div>
+            <span class="card-words">4,092字</span>
+          </a>
+          <a href="chapters/178.html" class="chapter-card" data-title="第一百七十八章　心死" data-code="178" data-num="178">
+            <div class="card-main">
+              <span class="card-code">#178</span>
+              <span class="card-title">第一百七十八章　心死</span>
+            </div>
+            <span class="card-words">4,156字</span>
+          </a>
+          <a href="chapters/179.html" class="chapter-card" data-title="第一百七十九章　化神" data-code="179" data-num="179">
+            <div class="card-main">
+              <span class="card-code">#179</span>
+              <span class="card-title">第一百七十九章　化神</span>
+            </div>
+            <span class="card-words">4,143字</span>
+          </a>
+          <a href="chapters/180.html" class="chapter-card" data-title="第一百八十章　成了" data-code="180" data-num="180">
+            <div class="card-main">
+              <span class="card-code">#180</span>
+              <span class="card-title">第一百八十章　成了</span>
+            </div>
+            <span class="card-words">4,094字</span>
+          </a>
+          <a href="chapters/181.html" class="chapter-card" data-title="第一百八十一章　陪坐" data-code="181" data-num="181">
+            <div class="card-main">
+              <span class="card-code">#181</span>
+              <span class="card-title">第一百八十一章　陪坐</span>
+            </div>
+            <span class="card-words">4,100字</span>
+          </a>
+          <a href="chapters/182.html" class="chapter-card" data-title="第一百八十二章　中期神" data-code="182" data-num="182">
+            <div class="card-main">
+              <span class="card-code">#182</span>
+              <span class="card-title">第一百八十二章　中期神</span>
+            </div>
+            <span class="card-words">4,092字</span>
+          </a>
+          <a href="chapters/183.html" class="chapter-card" data-title="第一百八十三章　共域" data-code="183" data-num="183">
+            <div class="card-main">
+              <span class="card-code">#183</span>
+              <span class="card-title">第一百八十三章　共域</span>
+            </div>
+            <span class="card-words">4,140字</span>
+          </a>
+          <a href="chapters/184.html" class="chapter-card" data-title="第一百八十四章　令盡" data-code="184" data-num="184">
+            <div class="card-main">
+              <span class="card-code">#184</span>
+              <span class="card-title">第一百八十四章　令盡</span>
+            </div>
+            <span class="card-words">4,088字</span>
+          </a>
+          <a href="chapters/185.html" class="chapter-card" data-title="第一百八十五章　監芯" data-code="185" data-num="185">
+            <div class="card-main">
+              <span class="card-code">#185</span>
+              <span class="card-title">第一百八十五章　監芯</span>
+            </div>
+            <span class="card-words">4,179字</span>
+          </a>
+          <a href="chapters/186.html" class="chapter-card" data-title="第一百八十六章　燼道卷" data-code="186" data-num="186">
+            <div class="card-main">
+              <span class="card-code">#186</span>
+              <span class="card-title">第一百八十六章　燼道卷</span>
+            </div>
+            <span class="card-words">4,087字</span>
+          </a>
+          <a href="chapters/187.html" class="chapter-card" data-title="第一百八十七章　照夜" data-code="187" data-num="187">
+            <div class="card-main">
+              <span class="card-code">#187</span>
+              <span class="card-title">第一百八十七章　照夜</span>
+            </div>
+            <span class="card-words">4,080字</span>
+          </a>
+          <a href="chapters/188.html" class="chapter-card" data-title="第一百八十八章　南線" data-code="188" data-num="188">
+            <div class="card-main">
+              <span class="card-code">#188</span>
+              <span class="card-title">第一百八十八章　南線</span>
+            </div>
+            <span class="card-words">4,077字</span>
+          </a>
+          <a href="chapters/189.html" class="chapter-card" data-title="第一百八十九章　西線" data-code="189" data-num="189">
+            <div class="card-main">
+              <span class="card-code">#189</span>
+              <span class="card-title">第一百八十九章　西線</span>
+            </div>
+            <span class="card-words">4,068字</span>
+          </a>
+          <a href="chapters/190.html" class="chapter-card" data-title="第一百九十章　北線" data-code="190" data-num="190">
+            <div class="card-main">
+              <span class="card-code">#190</span>
+              <span class="card-title">第一百九十章　北線</span>
+            </div>
+            <span class="card-words">4,117字</span>
+          </a>
+          <a href="chapters/191.html" class="chapter-card" data-title="第一百九十一章　學到" data-code="191" data-num="191">
+            <div class="card-main">
+              <span class="card-code">#191</span>
+              <span class="card-title">第一百九十一章　學到</span>
+            </div>
+            <span class="card-words">4,141字</span>
+          </a>
+          <a href="chapters/192.html" class="chapter-card" data-title="第一百九十二章　東線" data-code="192" data-num="192">
+            <div class="card-main">
+              <span class="card-code">#192</span>
+              <span class="card-title">第一百九十二章　東線</span>
+            </div>
+            <span class="card-words">4,084字</span>
+          </a>
+          <a href="chapters/193.html" class="chapter-card" data-title="第一百九十三章　城議" data-code="193" data-num="193">
+            <div class="card-main">
+              <span class="card-code">#193</span>
+              <span class="card-title">第一百九十三章　城議</span>
+            </div>
+            <span class="card-words">4,073字</span>
+          </a>
+          <a href="chapters/194.html" class="chapter-card" data-title="第一百九十四章　自決" data-code="194" data-num="194">
+            <div class="card-main">
+              <span class="card-code">#194</span>
+              <span class="card-title">第一百九十四章　自決</span>
+            </div>
+            <span class="card-words">4,145字</span>
+          </a>
+          <a href="chapters/195.html" class="chapter-card" data-title="第一百九十五章　二百前" data-code="195" data-num="195">
+            <div class="card-main">
+              <span class="card-code">#195</span>
+              <span class="card-title">第一百九十五章　二百前</span>
+            </div>
+            <span class="card-words">4,126字</span>
+          </a>
+          <a href="chapters/196.html" class="chapter-card" data-title="第一百九十六章　妻" data-code="196" data-num="196">
+            <div class="card-main">
+              <span class="card-code">#196</span>
+              <span class="card-title">第一百九十六章　妻</span>
+            </div>
+            <span class="card-words">4,154字</span>
+          </a>
+          <a href="chapters/197.html" class="chapter-card" data-title="第一百九十七章　尺鳴" data-code="197" data-num="197">
+            <div class="card-main">
+              <span class="card-code">#197</span>
+              <span class="card-title">第一百九十七章　尺鳴</span>
+            </div>
+            <span class="card-words">4,075字</span>
+          </a>
+          <a href="chapters/198.html" class="chapter-card" data-title="第一百九十八章　安" data-code="198" data-num="198">
+            <div class="card-main">
+              <span class="card-code">#198</span>
+              <span class="card-title">第一百九十八章　安</span>
+            </div>
+            <span class="card-words">4,101字</span>
+          </a>
+          <a href="chapters/199.html" class="chapter-card" data-title="第一百九十九章　不散" data-code="199" data-num="199">
+            <div class="card-main">
+              <span class="card-code">#199</span>
+              <span class="card-title">第一百九十九章　不散</span>
+            </div>
+            <span class="card-words">4,068字</span>
+          </a>
+          <a href="chapters/200.html" class="chapter-card" data-title="第二百章　二百" data-code="200" data-num="200">
+            <div class="card-main">
+              <span class="card-code">#200</span>
+              <span class="card-title">第二百章　二百</span>
+            </div>
+            <span class="card-words">4,089字</span>
+          </a>
+          <a href="chapters/201.html" class="chapter-card" data-title="第二百零一章　送尺" data-code="201" data-num="201">
+            <div class="card-main">
+              <span class="card-code">#201</span>
+              <span class="card-title">第二百零一章　送尺</span>
+            </div>
+            <span class="card-words">4,308字</span>
+          </a>
+          <a href="chapters/202.html" class="chapter-card" data-title="第二百零二章　盟務" data-code="202" data-num="202">
+            <div class="card-main">
+              <span class="card-code">#202</span>
+              <span class="card-title">第二百零二章　盟務</span>
+            </div>
+            <span class="card-words">4,530字</span>
+          </a>
+          <a href="chapters/203.html" class="chapter-card" data-title="第二百零三章　輪值" data-code="203" data-num="203">
+            <div class="card-main">
+              <span class="card-code">#203</span>
+              <span class="card-title">第二百零三章　輪值</span>
+            </div>
+            <span class="card-words">4,263字</span>
+          </a>
+          <a href="chapters/204.html" class="chapter-card" data-title="第二百零四章　空案" data-code="204" data-num="204">
+            <div class="card-main">
+              <span class="card-code">#204</span>
+              <span class="card-title">第二百零四章　空案</span>
+            </div>
+            <span class="card-words">4,254字</span>
+          </a>
+          <a href="chapters/205.html" class="chapter-card" data-title="第二百零五章　南報" data-code="205" data-num="205">
+            <div class="card-main">
+              <span class="card-code">#205</span>
+              <span class="card-title">第二百零五章　南報</span>
+            </div>
+            <span class="card-words">4,314字</span>
+          </a>
+          <a href="chapters/206.html" class="chapter-card" data-title="第二百零六章　灰援" data-code="206" data-num="206">
+            <div class="card-main">
+              <span class="card-code">#206</span>
+              <span class="card-title">第二百零六章　灰援</span>
+            </div>
+            <span class="card-words">4,255字</span>
+          </a>
+          <a href="chapters/207.html" class="chapter-card" data-title="第二百零七章　清辭信" data-code="207" data-num="207">
+            <div class="card-main">
+              <span class="card-code">#207</span>
+              <span class="card-title">第二百零七章　清辭信</span>
+            </div>
+            <span class="card-words">4,522字</span>
+          </a>
+          <a href="chapters/208.html" class="chapter-card" data-title="第二百零八章　失眠" data-code="208" data-num="208">
+            <div class="card-main">
+              <span class="card-code">#208</span>
+              <span class="card-title">第二百零八章　失眠</span>
+            </div>
+            <span class="card-words">4,263字</span>
+          </a>
+          <a href="chapters/209.html" class="chapter-card" data-title="第二百零九章　闕影晃" data-code="209" data-num="209">
+            <div class="card-main">
+              <span class="card-code">#209</span>
+              <span class="card-title">第二百零九章　闕影晃</span>
+            </div>
+            <span class="card-words">4,259字</span>
+          </a>
+          <a href="chapters/210.html" class="chapter-card" data-title="第二百一十章　趙書" data-code="210" data-num="210">
+            <div class="card-main">
+              <span class="card-code">#210</span>
+              <span class="card-title">第二百一十章　趙書</span>
+            </div>
+            <span class="card-words">4,288字</span>
+          </a>
+          <a href="chapters/211.html" class="chapter-card" data-title="第二百一十一章　碑雨" data-code="211" data-num="211">
+            <div class="card-main">
+              <span class="card-code">#211</span>
+              <span class="card-title">第二百一十一章　碑雨</span>
+            </div>
+            <span class="card-words">4,260字</span>
+          </a>
+          <a href="chapters/212.html" class="chapter-card" data-title="第二百一十二章　晚棠訊" data-code="212" data-num="212">
+            <div class="card-main">
+              <span class="card-code">#212</span>
+              <span class="card-title">第二百一十二章　晚棠訊</span>
+            </div>
+            <span class="card-words">4,530字</span>
+          </a>
+          <a href="chapters/213.html" class="chapter-card" data-title="第二百一十三章　韓七訊" data-code="213" data-num="213">
+            <div class="card-main">
+              <span class="card-code">#213</span>
+              <span class="card-title">第二百一十三章　韓七訊</span>
+            </div>
+            <span class="card-words">4,562字</span>
+          </a>
+          <a href="chapters/214.html" class="chapter-card" data-title="第二百一十四章　窗口" data-code="214" data-num="214">
+            <div class="card-main">
+              <span class="card-code">#214</span>
+              <span class="card-title">第二百一十四章　窗口</span>
+            </div>
+            <span class="card-words">4,294字</span>
+          </a>
+          <a href="chapters/215.html" class="chapter-card" data-title="第二百一十五章　葉衡" data-code="215" data-num="215">
+            <div class="card-main">
+              <span class="card-code">#215</span>
+              <span class="card-title">第二百一十五章　葉衡</span>
+            </div>
+            <span class="card-words">4,299字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-6" data-vol-num="6">
+        <div class="volume-header">
+          <h3>第六卷　長明燈會 <small>（第 216–260 章）</small></h3>
+          <span class="volume-desc">長明巨城・萬仙盛會・暗度陳倉</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/216.html" class="chapter-card" data-title="第二百一十六章　啟程" data-code="216" data-num="216">
+            <div class="card-main">
+              <span class="card-code">#216</span>
+              <span class="card-title">第二百一十六章　啟程</span>
+            </div>
+            <span class="card-words">4,262字</span>
+          </a>
+          <a href="chapters/217.html" class="chapter-card" data-title="第二百一十七章　舊渡" data-code="217" data-num="217">
+            <div class="card-main">
+              <span class="card-code">#217</span>
+              <span class="card-title">第二百一十七章　舊渡</span>
+            </div>
+            <span class="card-words">4,518字</span>
+          </a>
+          <a href="chapters/218.html" class="chapter-card" data-title="第二百一十八章　河屍無" data-code="218" data-num="218">
+            <div class="card-main">
+              <span class="card-code">#218</span>
+              <span class="card-title">第二百一十八章　河屍無</span>
+            </div>
+            <span class="card-words">4,557字</span>
+          </a>
+          <a href="chapters/219.html" class="chapter-card" data-title="第二百一十九章　入骨" data-code="219" data-num="219">
+            <div class="card-main">
+              <span class="card-code">#219</span>
+              <span class="card-title">第二百一十九章　入骨</span>
+            </div>
+            <span class="card-words">4,261字</span>
+          </a>
+          <a href="chapters/220.html" class="chapter-card" data-title="第二百二十章　胎記" data-code="220" data-num="220">
+            <div class="card-main">
+              <span class="card-code">#220</span>
+              <span class="card-title">第二百二十章　胎記</span>
+            </div>
+            <span class="card-words">4,281字</span>
+          </a>
+          <a href="chapters/221.html" class="chapter-card" data-title="第二百二十一章　叩門" data-code="221" data-num="221">
+            <div class="card-main">
+              <span class="card-code">#221</span>
+              <span class="card-title">第二百二十一章　叩門</span>
+            </div>
+            <span class="card-words">4,588字</span>
+          </a>
+          <a href="chapters/222.html" class="chapter-card" data-title="第二百二十二章　門內" data-code="222" data-num="222">
+            <div class="card-main">
+              <span class="card-code">#222</span>
+              <span class="card-title">第二百二十二章　門內</span>
+            </div>
+            <span class="card-words">4,581字</span>
+          </a>
+          <a href="chapters/223.html" class="chapter-card" data-title="第二百二十三章　抄經" data-code="223" data-num="223">
+            <div class="card-main">
+              <span class="card-code">#223</span>
+              <span class="card-title">第二百二十三章　抄經</span>
+            </div>
+            <span class="card-words">4,591字</span>
+          </a>
+          <a href="chapters/224.html" class="chapter-card" data-title="第二百二十四章　恨潮" data-code="224" data-num="224">
+            <div class="card-main">
+              <span class="card-code">#224</span>
+              <span class="card-title">第二百二十四章　恨潮</span>
+            </div>
+            <span class="card-words">4,578字</span>
+          </a>
+          <a href="chapters/225.html" class="chapter-card" data-title="第二百二十五章　喘" data-code="225" data-num="225">
+            <div class="card-main">
+              <span class="card-code">#225</span>
+              <span class="card-title">第二百二十五章　喘</span>
+            </div>
+            <span class="card-words">4,569字</span>
+          </a>
+          <a href="chapters/226.html" class="chapter-card" data-title="第二百二十六章　餘黨" data-code="226" data-num="226">
+            <div class="card-main">
+              <span class="card-code">#226</span>
+              <span class="card-title">第二百二十六章　餘黨</span>
+            </div>
+            <span class="card-words">4,580字</span>
+          </a>
+          <a href="chapters/227.html" class="chapter-card" data-title="第二百二十七章　一寸" data-code="227" data-num="227">
+            <div class="card-main">
+              <span class="card-code">#227</span>
+              <span class="card-title">第二百二十七章　一寸</span>
+            </div>
+            <span class="card-words">4,596字</span>
+          </a>
+          <a href="chapters/228.html" class="chapter-card" data-title="第二百二十八章　失我試" data-code="228" data-num="228">
+            <div class="card-main">
+              <span class="card-code">#228</span>
+              <span class="card-title">第二百二十八章　失我試</span>
+            </div>
+            <span class="card-words">4,590字</span>
+          </a>
+          <a href="chapters/229.html" class="chapter-card" data-title="第二百二十九章　守陵成" data-code="229" data-num="229">
+            <div class="card-main">
+              <span class="card-code">#229</span>
+              <span class="card-title">第二百二十九章　守陵成</span>
+            </div>
+            <span class="card-words">4,594字</span>
+          </a>
+          <a href="chapters/230.html" class="chapter-card" data-title="第二百三十章　歲半" data-code="230" data-num="230">
+            <div class="card-main">
+              <span class="card-code">#230</span>
+              <span class="card-title">第二百三十章　歲半</span>
+            </div>
+            <span class="card-words">4,541字</span>
+          </a>
+          <a href="chapters/231.html" class="chapter-card" data-title="第二百三十一章　歸城" data-code="231" data-num="231">
+            <div class="card-main">
+              <span class="card-code">#231</span>
+              <span class="card-title">第二百三十一章　歸城</span>
+            </div>
+            <span class="card-words">4,572字</span>
+          </a>
+          <a href="chapters/232.html" class="chapter-card" data-title="第二百三十二章　吃飯" data-code="232" data-num="232">
+            <div class="card-main">
+              <span class="card-code">#232</span>
+              <span class="card-title">第二百三十二章　吃飯</span>
+            </div>
+            <span class="card-words">4,567字</span>
+          </a>
+          <a href="chapters/233.html" class="chapter-card" data-title="第二百三十三章　南急" data-code="233" data-num="233">
+            <div class="card-main">
+              <span class="card-code">#233</span>
+              <span class="card-title">第二百三十三章　南急</span>
+            </div>
+            <span class="card-words">4,586字</span>
+          </a>
+          <a href="chapters/234.html" class="chapter-card" data-title="第二百三十四章　南下" data-code="234" data-num="234">
+            <div class="card-main">
+              <span class="card-code">#234</span>
+              <span class="card-title">第二百三十四章　南下</span>
+            </div>
+            <span class="card-words">4,566字</span>
+          </a>
+          <a href="chapters/235.html" class="chapter-card" data-title="第二百三十五章　真身" data-code="235" data-num="235">
+            <div class="card-main">
+              <span class="card-code">#235</span>
+              <span class="card-title">第二百三十五章　真身</span>
+            </div>
+            <span class="card-words">4,596字</span>
+          </a>
+          <a href="chapters/236.html" class="chapter-card" data-title="第二百三十六章　疫火" data-code="236" data-num="236">
+            <div class="card-main">
+              <span class="card-code">#236</span>
+              <span class="card-title">第二百三十六章　疫火</span>
+            </div>
+            <span class="card-words">4,573字</span>
+          </a>
+          <a href="chapters/237.html" class="chapter-card" data-title="第二百三十七章　暫緩" data-code="237" data-num="237">
+            <div class="card-main">
+              <span class="card-code">#237</span>
+              <span class="card-title">第二百三十七章　暫緩</span>
+            </div>
+            <span class="card-words">4,562字</span>
+          </a>
+          <a href="chapters/238.html" class="chapter-card" data-title="第二百三十八章　罵" data-code="238" data-num="238">
+            <div class="card-main">
+              <span class="card-code">#238</span>
+              <span class="card-title">第二百三十八章　罵</span>
+            </div>
+            <span class="card-words">4,542字</span>
+          </a>
+          <a href="chapters/239.html" class="chapter-card" data-title="第二百三十九章　闕逼" data-code="239" data-num="239">
+            <div class="card-main">
+              <span class="card-code">#239</span>
+              <span class="card-title">第二百三十九章　闕逼</span>
+            </div>
+            <span class="card-words">4,561字</span>
+          </a>
+          <a href="chapters/240.html" class="chapter-card" data-title="第二百四十章　遷" data-code="240" data-num="240">
+            <div class="card-main">
+              <span class="card-code">#240</span>
+              <span class="card-title">第二百四十章　遷</span>
+            </div>
+            <span class="card-words">4,521字</span>
+          </a>
+          <a href="chapters/241.html" class="chapter-card" data-title="第二百四十一章　東岸寸" data-code="241" data-num="241">
+            <div class="card-main">
+              <span class="card-code">#241</span>
+              <span class="card-title">第二百四十一章　東岸寸</span>
+            </div>
+            <span class="card-words">4,454字</span>
+          </a>
+          <a href="chapters/242.html" class="chapter-card" data-title="第二百四十二章　看見人" data-code="242" data-num="242">
+            <div class="card-main">
+              <span class="card-code">#242</span>
+              <span class="card-title">第二百四十二章　看見人</span>
+            </div>
+            <span class="card-words">4,427字</span>
+          </a>
+          <a href="chapters/243.html" class="chapter-card" data-title="第二百四十三章　殿後" data-code="243" data-num="243">
+            <div class="card-main">
+              <span class="card-code">#243</span>
+              <span class="card-title">第二百四十三章　殿後</span>
+            </div>
+            <span class="card-words">4,419字</span>
+          </a>
+          <a href="chapters/244.html" class="chapter-card" data-title="第二百四十四章　落燈召" data-code="244" data-num="244">
+            <div class="card-main">
+              <span class="card-code">#244</span>
+              <span class="card-title">第二百四十四章　落燈召</span>
+            </div>
+            <span class="card-words">4,436字</span>
+          </a>
+          <a href="chapters/245.html" class="chapter-card" data-title="第二百四十五章　回鎮" data-code="245" data-num="245">
+            <div class="card-main">
+              <span class="card-code">#245</span>
+              <span class="card-title">第二百四十五章　回鎮</span>
+            </div>
+            <span class="card-words">4,427字</span>
+          </a>
+          <a href="chapters/246.html" class="chapter-card" data-title="第二百四十六章　芽" data-code="246" data-num="246">
+            <div class="card-main">
+              <span class="card-code">#246</span>
+              <span class="card-title">第二百四十六章　芽</span>
+            </div>
+            <span class="card-words">4,426字</span>
+          </a>
+          <a href="chapters/247.html" class="chapter-card" data-title="第二百四十七章　河戰前" data-code="247" data-num="247">
+            <div class="card-main">
+              <span class="card-code">#247</span>
+              <span class="card-title">第二百四十七章　河戰前</span>
+            </div>
+            <span class="card-words">4,422字</span>
+          </a>
+          <a href="chapters/248.html" class="chapter-card" data-title="第二百四十八章　夾擊" data-code="248" data-num="248">
+            <div class="card-main">
+              <span class="card-code">#248</span>
+              <span class="card-title">第二百四十八章　夾擊</span>
+            </div>
+            <span class="card-words">4,419字</span>
+          </a>
+          <a href="chapters/249.html" class="chapter-card" data-title="第二百四十九章　稱人" data-code="249" data-num="249">
+            <div class="card-main">
+              <span class="card-code">#249</span>
+              <span class="card-title">第二百四十九章　稱人</span>
+            </div>
+            <span class="card-words">4,425字</span>
+          </a>
+          <a href="chapters/250.html" class="chapter-card" data-title="第二百五十章　半卷" data-code="250" data-num="250">
+            <div class="card-main">
+              <span class="card-code">#250</span>
+              <span class="card-title">第二百五十章　半卷</span>
+            </div>
+            <span class="card-words">4,427字</span>
+          </a>
+          <a href="chapters/251.html" class="chapter-card" data-title="第二百五十一章　清辭歸" data-code="251" data-num="251">
+            <div class="card-main">
+              <span class="card-code">#251</span>
+              <span class="card-title">第二百五十一章　清辭歸</span>
+            </div>
+            <span class="card-words">4,434字</span>
+          </a>
+          <a href="chapters/252.html" class="chapter-card" data-title="第二百五十二章　常記" data-code="252" data-num="252">
+            <div class="card-main">
+              <span class="card-code">#252</span>
+              <span class="card-title">第二百五十二章　常記</span>
+            </div>
+            <span class="card-words">4,424字</span>
+          </a>
+          <a href="chapters/253.html" class="chapter-card" data-title="第二百五十三章　厲影" data-code="253" data-num="253">
+            <div class="card-main">
+              <span class="card-code">#253</span>
+              <span class="card-title">第二百五十三章　厲影</span>
+            </div>
+            <span class="card-words">4,431字</span>
+          </a>
+          <a href="chapters/254.html" class="chapter-card" data-title="第二百五十四章　掛帳" data-code="254" data-num="254">
+            <div class="card-main">
+              <span class="card-code">#254</span>
+              <span class="card-title">第二百五十四章　掛帳</span>
+            </div>
+            <span class="card-words">4,417字</span>
+          </a>
+          <a href="chapters/255.html" class="chapter-card" data-title="第二百五十五章　韓七急" data-code="255" data-num="255">
+            <div class="card-main">
+              <span class="card-code">#255</span>
+              <span class="card-title">第二百五十五章　韓七急</span>
+            </div>
+            <span class="card-words">4,429字</span>
+          </a>
+          <a href="chapters/256.html" class="chapter-card" data-title="第二百五十六章　再西" data-code="256" data-num="256">
+            <div class="card-main">
+              <span class="card-code">#256</span>
+              <span class="card-title">第二百五十六章　再西</span>
+            </div>
+            <span class="card-words">4,430字</span>
+          </a>
+          <a href="chapters/257.html" class="chapter-card" data-title="第二百五十七章　四成" data-code="257" data-num="257">
+            <div class="card-main">
+              <span class="card-code">#257</span>
+              <span class="card-title">第二百五十七章　四成</span>
+            </div>
+            <span class="card-words">4,429字</span>
+          </a>
+          <a href="chapters/258.html" class="chapter-card" data-title="第二百五十八章　暫收" data-code="258" data-num="258">
+            <div class="card-main">
+              <span class="card-code">#258</span>
+              <span class="card-title">第二百五十八章　暫收</span>
+            </div>
+            <span class="card-words">4,427字</span>
+          </a>
+          <a href="chapters/259.html" class="chapter-card" data-title="第二百五十九章　叔叔" data-code="259" data-num="259">
+            <div class="card-main">
+              <span class="card-code">#259</span>
+              <span class="card-title">第二百五十九章　叔叔</span>
+            </div>
+            <span class="card-words">4,413字</span>
+          </a>
+          <a href="chapters/260.html" class="chapter-card" data-title="第二百六十章　餅威" data-code="260" data-num="260">
+            <div class="card-main">
+              <span class="card-code">#260</span>
+              <span class="card-title">第二百六十章　餅威</span>
+            </div>
+            <span class="card-words">4,407字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-7" data-vol-num="7">
+        <div class="volume-header">
+          <h3>第七卷　萬燈逆焰 <small>（第 261–300 章）</small></h3>
+          <span class="volume-desc">神殿決裂・萬燈齊暗・反虛逆天</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/261.html" class="chapter-card" data-title="第二百六十一章　脫籍議" data-code="261" data-num="261">
+            <div class="card-main">
+              <span class="card-code">#261</span>
+              <span class="card-title">第二百六十一章　脫籍議</span>
+            </div>
+            <span class="card-words">4,456字</span>
+          </a>
+          <a href="chapters/262.html" class="chapter-card" data-title="第二百六十二章　三條" data-code="262" data-num="262">
+            <div class="card-main">
+              <span class="card-code">#262</span>
+              <span class="card-title">第二百六十二章　三條</span>
+            </div>
+            <span class="card-words">4,419字</span>
+          </a>
+          <a href="chapters/263.html" class="chapter-card" data-title="第二百六十三章　糧爭" data-code="263" data-num="263">
+            <div class="card-main">
+              <span class="card-code">#263</span>
+              <span class="card-title">第二百六十三章　糧爭</span>
+            </div>
+            <span class="card-words">4,433字</span>
+          </a>
+          <a href="chapters/264.html" class="chapter-card" data-title="第二百六十四章　怕" data-code="264" data-num="264">
+            <div class="card-main">
+              <span class="card-code">#264</span>
+              <span class="card-title">第二百六十四章　怕</span>
+            </div>
+            <span class="card-words">4,406字</span>
+          </a>
+          <a href="chapters/265.html" class="chapter-card" data-title="第二百六十五章　河起" data-code="265" data-num="265">
+            <div class="card-main">
+              <span class="card-code">#265</span>
+              <span class="card-title">第二百六十五章　河起</span>
+            </div>
+            <span class="card-words">4,434字</span>
+          </a>
+          <a href="chapters/266.html" class="chapter-card" data-title="第二百六十六章　先鋒" data-code="266" data-num="266">
+            <div class="card-main">
+              <span class="card-code">#266</span>
+              <span class="card-title">第二百六十六章　先鋒</span>
+            </div>
+            <span class="card-words">4,432字</span>
+          </a>
+          <a href="chapters/267.html" class="chapter-card" data-title="第二百六十七章　不知" data-code="267" data-num="267">
+            <div class="card-main">
+              <span class="card-code">#267</span>
+              <span class="card-title">第二百六十七章　不知</span>
+            </div>
+            <span class="card-words">4,400字</span>
+          </a>
+          <a href="chapters/268.html" class="chapter-card" data-title="第二百六十八章　青嵐急" data-code="268" data-num="268">
+            <div class="card-main">
+              <span class="card-code">#268</span>
+              <span class="card-title">第二百六十八章　青嵐急</span>
+            </div>
+            <span class="card-words">4,431字</span>
+          </a>
+          <a href="chapters/269.html" class="chapter-card" data-title="第二百六十九章　拉扯" data-code="269" data-num="269">
+            <div class="card-main">
+              <span class="card-code">#269</span>
+              <span class="card-title">第二百六十九章　拉扯</span>
+            </div>
+            <span class="card-words">4,408字</span>
+          </a>
+          <a href="chapters/270.html" class="chapter-card" data-title="第二百七十章　河定" data-code="270" data-num="270">
+            <div class="card-main">
+              <span class="card-code">#270</span>
+              <span class="card-title">第二百七十章　河定</span>
+            </div>
+            <span class="card-words">4,411字</span>
+          </a>
+          <a href="chapters/271.html" class="chapter-card" data-title="第二百七十一章　山裂" data-code="271" data-num="271">
+            <div class="card-main">
+              <span class="card-code">#271</span>
+              <span class="card-title">第二百七十一章　山裂</span>
+            </div>
+            <span class="card-words">4,244字</span>
+          </a>
+          <a href="chapters/272.html" class="chapter-card" data-title="第二百七十二章　入山" data-code="272" data-num="272">
+            <div class="card-main">
+              <span class="card-code">#272</span>
+              <span class="card-title">第二百七十二章　入山</span>
+            </div>
+            <span class="card-words">4,226字</span>
+          </a>
+          <a href="chapters/273.html" class="chapter-card" data-title="第二百七十三章　啞婆" data-code="273" data-num="273">
+            <div class="card-main">
+              <span class="card-code">#273</span>
+              <span class="card-title">第二百七十三章　啞婆</span>
+            </div>
+            <span class="card-words">4,237字</span>
+          </a>
+          <a href="chapters/274.html" class="chapter-card" data-title="第二百七十四章　守外" data-code="274" data-num="274">
+            <div class="card-main">
+              <span class="card-code">#274</span>
+              <span class="card-title">第二百七十四章　守外</span>
+            </div>
+            <span class="card-words">4,231字</span>
+          </a>
+          <a href="chapters/275.html" class="chapter-card" data-title="第二百七十五章　斷後" data-code="275" data-num="275">
+            <div class="card-main">
+              <span class="card-code">#275</span>
+              <span class="card-title">第二百七十五章　斷後</span>
+            </div>
+            <span class="card-words">4,224字</span>
+          </a>
+          <a href="chapters/276.html" class="chapter-card" data-title="第二百七十六章　陣崩" data-code="276" data-num="276">
+            <div class="card-main">
+              <span class="card-code">#276</span>
+              <span class="card-title">第二百七十六章　陣崩</span>
+            </div>
+            <span class="card-words">4,224字</span>
+          </a>
+          <a href="chapters/277.html" class="chapter-card" data-title="第二百七十七章　外溢" data-code="277" data-num="277">
+            <div class="card-main">
+              <span class="card-code">#277</span>
+              <span class="card-title">第二百七十七章　外溢</span>
+            </div>
+            <span class="card-words">4,222字</span>
+          </a>
+          <a href="chapters/278.html" class="chapter-card" data-title="第二百七十八章　婆" data-code="278" data-num="278">
+            <div class="card-main">
+              <span class="card-code">#278</span>
+              <span class="card-title">第二百七十八章　婆</span>
+            </div>
+            <span class="card-words">4,259字</span>
+          </a>
+          <a href="chapters/279.html" class="chapter-card" data-title="第二百七十九章　滅" data-code="279" data-num="279">
+            <div class="card-main">
+              <span class="card-code">#279</span>
+              <span class="card-title">第二百七十九章　滅</span>
+            </div>
+            <span class="card-words">4,231字</span>
+          </a>
+          <a href="chapters/280.html" class="chapter-card" data-title="第二百八十章　債山" data-code="280" data-num="280">
+            <div class="card-main">
+              <span class="card-code">#280</span>
+              <span class="card-title">第二百八十章　債山</span>
+            </div>
+            <span class="card-words">4,237字</span>
+          </a>
+          <a href="chapters/281.html" class="chapter-card" data-title="第二百八十一章　珂劫" data-code="281" data-num="281">
+            <div class="card-main">
+              <span class="card-code">#281</span>
+              <span class="card-title">第二百八十一章　珂劫</span>
+            </div>
+            <span class="card-words">4,238字</span>
+          </a>
+          <a href="chapters/282.html" class="chapter-card" data-title="第二百八十二章　換" data-code="282" data-num="282">
+            <div class="card-main">
+              <span class="card-code">#282</span>
+              <span class="card-title">第二百八十二章　換</span>
+            </div>
+            <span class="card-words">4,221字</span>
+          </a>
+          <a href="chapters/283.html" class="chapter-card" data-title="第二百八十三章　引路" data-code="283" data-num="283">
+            <div class="card-main">
+              <span class="card-code">#283</span>
+              <span class="card-title">第二百八十三章　引路</span>
+            </div>
+            <span class="card-words">4,233字</span>
+          </a>
+          <a href="chapters/284.html" class="chapter-card" data-title="第二百八十四章　移" data-code="284" data-num="284">
+            <div class="card-main">
+              <span class="card-code">#284</span>
+              <span class="card-title">第二百八十四章　移</span>
+            </div>
+            <span class="card-words">4,223字</span>
+          </a>
+          <a href="chapters/285.html" class="chapter-card" data-title="第二百八十五章　餌" data-code="285" data-num="285">
+            <div class="card-main">
+              <span class="card-code">#285</span>
+              <span class="card-title">第二百八十五章　餌</span>
+            </div>
+            <span class="card-words">4,222字</span>
+          </a>
+          <a href="chapters/286.html" class="chapter-card" data-title="第二百八十六章　川" data-code="286" data-num="286">
+            <div class="card-main">
+              <span class="card-code">#286</span>
+              <span class="card-title">第二百八十六章　川</span>
+            </div>
+            <span class="card-words">4,243字</span>
+          </a>
+          <a href="chapters/287.html" class="chapter-card" data-title="第二百八十七章　圖" data-code="287" data-num="287">
+            <div class="card-main">
+              <span class="card-code">#287</span>
+              <span class="card-title">第二百八十七章　圖</span>
+            </div>
+            <span class="card-words">4,236字</span>
+          </a>
+          <a href="chapters/288.html" class="chapter-card" data-title="第二百八十八章　佈防" data-code="288" data-num="288">
+            <div class="card-main">
+              <span class="card-code">#288</span>
+              <span class="card-title">第二百八十八章　佈防</span>
+            </div>
+            <span class="card-words">4,222字</span>
+          </a>
+          <a href="chapters/289.html" class="chapter-card" data-title="第二百八十九章　誘" data-code="289" data-num="289">
+            <div class="card-main">
+              <span class="card-code">#289</span>
+              <span class="card-title">第二百八十九章　誘</span>
+            </div>
+            <span class="card-words">4,216字</span>
+          </a>
+          <a href="chapters/290.html" class="chapter-card" data-title="第二百九十章　後期" data-code="290" data-num="290">
+            <div class="card-main">
+              <span class="card-code">#290</span>
+              <span class="card-title">第二百九十章　後期</span>
+            </div>
+            <span class="card-words">4,227字</span>
+          </a>
+          <a href="chapters/291.html" class="chapter-card" data-title="第二百九十一章　讀名" data-code="291" data-num="291">
+            <div class="card-main">
+              <span class="card-code">#291</span>
+              <span class="card-title">第二百九十一章　讀名</span>
+            </div>
+            <span class="card-words">4,217字</span>
+          </a>
+          <a href="chapters/292.html" class="chapter-card" data-title="第二百九十二章　城下" data-code="292" data-num="292">
+            <div class="card-main">
+              <span class="card-code">#292</span>
+              <span class="card-title">第二百九十二章　城下</span>
+            </div>
+            <span class="card-words">4,232字</span>
+          </a>
+          <a href="chapters/293.html" class="chapter-card" data-title="第二百九十三章　舊釘" data-code="293" data-num="293">
+            <div class="card-main">
+              <span class="card-code">#293</span>
+              <span class="card-title">第二百九十三章　舊釘</span>
+            </div>
+            <span class="card-words">4,237字</span>
+          </a>
+          <a href="chapters/294.html" class="chapter-card" data-title="第二百九十四章　平" data-code="294" data-num="294">
+            <div class="card-main">
+              <span class="card-code">#294</span>
+              <span class="card-title">第二百九十四章　平</span>
+            </div>
+            <span class="card-words">4,225字</span>
+          </a>
+          <a href="chapters/295.html" class="chapter-card" data-title="第二百九十五章　燙" data-code="295" data-num="295">
+            <div class="card-main">
+              <span class="card-code">#295</span>
+              <span class="card-title">第二百九十五章　燙</span>
+            </div>
+            <span class="card-words">4,271字</span>
+          </a>
+          <a href="chapters/296.html" class="chapter-card" data-title="第二百九十六章　拽回" data-code="296" data-num="296">
+            <div class="card-main">
+              <span class="card-code">#296</span>
+              <span class="card-title">第二百九十六章　拽回</span>
+            </div>
+            <span class="card-words">4,222字</span>
+          </a>
+          <a href="chapters/297.html" class="chapter-card" data-title="第二百九十七章　剎" data-code="297" data-num="297">
+            <div class="card-main">
+              <span class="card-code">#297</span>
+              <span class="card-title">第二百九十七章　剎</span>
+            </div>
+            <span class="card-words">4,223字</span>
+          </a>
+          <a href="chapters/298.html" class="chapter-card" data-title="第二百九十八章　照" data-code="298" data-num="298">
+            <div class="card-main">
+              <span class="card-code">#298</span>
+              <span class="card-title">第二百九十八章　照</span>
+            </div>
+            <span class="card-words">4,224字</span>
+          </a>
+          <a href="chapters/299.html" class="chapter-card" data-title="第二百九十九章　傷" data-code="299" data-num="299">
+            <div class="card-main">
+              <span class="card-code">#299</span>
+              <span class="card-title">第二百九十九章　傷</span>
+            </div>
+            <span class="card-words">4,224字</span>
+          </a>
+          <a href="chapters/300.html" class="chapter-card" data-title="第三百章　三百" data-code="300" data-num="300">
+            <div class="card-main">
+              <span class="card-code">#300</span>
+              <span class="card-title">第三百章　三百</span>
+            </div>
+            <span class="card-words">4,256字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-8" data-vol-num="8">
+        <div class="volume-header">
+          <h3>第八卷　天闕無門 <small>（第 301–335 章）</small></h3>
+          <span class="volume-desc">登天之路・無門之闕・真相殘酷</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/301.html" class="chapter-card" data-title="第三百零一章　安民後" data-code="301" data-num="301">
+            <div class="card-main">
+              <span class="card-code">#301</span>
+              <span class="card-title">第三百零一章　安民後</span>
+            </div>
+            <span class="card-words">4,476字</span>
+          </a>
+          <a href="chapters/302.html" class="chapter-card" data-title="第三百零二章　五人" data-code="302" data-num="302">
+            <div class="card-main">
+              <span class="card-code">#302</span>
+              <span class="card-title">第三百零二章　五人</span>
+            </div>
+            <span class="card-words">4,463字</span>
+          </a>
+          <a href="chapters/303.html" class="chapter-card" data-title="第三百零三章　梯根" data-code="303" data-num="303">
+            <div class="card-main">
+              <span class="card-code">#303</span>
+              <span class="card-title">第三百零三章　梯根</span>
+            </div>
+            <span class="card-words">4,471字</span>
+          </a>
+          <a href="chapters/304.html" class="chapter-card" data-title="第三百零四章　殼臉" data-code="304" data-num="304">
+            <div class="card-main">
+              <span class="card-code">#304</span>
+              <span class="card-title">第三百零四章　殼臉</span>
+            </div>
+            <span class="card-words">4,460字</span>
+          </a>
+          <a href="chapters/305.html" class="chapter-card" data-title="第三百零五章　上階" data-code="305" data-num="305">
+            <div class="card-main">
+              <span class="card-code">#305</span>
+              <span class="card-title">第三百零五章　上階</span>
+            </div>
+            <span class="card-words">4,467字</span>
+          </a>
+          <a href="chapters/306.html" class="chapter-card" data-title="第三百零六章　繩" data-code="306" data-num="306">
+            <div class="card-main">
+              <span class="card-code">#306</span>
+              <span class="card-title">第三百零六章　繩</span>
+            </div>
+            <span class="card-words">4,458字</span>
+          </a>
+          <a href="chapters/307.html" class="chapter-card" data-title="第三百零七章　不斬" data-code="307" data-num="307">
+            <div class="card-main">
+              <span class="card-code">#307</span>
+              <span class="card-title">第三百零七章　不斬</span>
+            </div>
+            <span class="card-words">4,451字</span>
+          </a>
+          <a href="chapters/308.html" class="chapter-card" data-title="第三百零八章　殼市" data-code="308" data-num="308">
+            <div class="card-main">
+              <span class="card-code">#308</span>
+              <span class="card-title">第三百零八章　殼市</span>
+            </div>
+            <span class="card-words">4,468字</span>
+          </a>
+          <a href="chapters/309.html" class="chapter-card" data-title="第三百零九章　髒" data-code="309" data-num="309">
+            <div class="card-main">
+              <span class="card-code">#309</span>
+              <span class="card-title">第三百零九章　髒</span>
+            </div>
+            <span class="card-words">4,442字</span>
+          </a>
+          <a href="chapters/310.html" class="chapter-card" data-title="第三百一十章　半梯" data-code="310" data-num="310">
+            <div class="card-main">
+              <span class="card-code">#310</span>
+              <span class="card-title">第三百一十章　半梯</span>
+            </div>
+            <span class="card-words">4,471字</span>
+          </a>
+          <a href="chapters/311.html" class="chapter-card" data-title="第三百一十一章　別信殼" data-code="311" data-num="311">
+            <div class="card-main">
+              <span class="card-code">#311</span>
+              <span class="card-title">第三百一十一章　別信殼</span>
+            </div>
+            <span class="card-words">4,469字</span>
+          </a>
+          <a href="chapters/312.html" class="chapter-card" data-title="第三百一十二章　闕門" data-code="312" data-num="312">
+            <div class="card-main">
+              <span class="card-code">#312</span>
+              <span class="card-title">第三百一十二章　闕門</span>
+            </div>
+            <span class="card-words">4,469字</span>
+          </a>
+          <a href="chapters/313.html" class="chapter-card" data-title="第三百一十三章　入闕" data-code="313" data-num="313">
+            <div class="card-main">
+              <span class="card-code">#313</span>
+              <span class="card-title">第三百一十三章　入闕</span>
+            </div>
+            <span class="card-words">4,476字</span>
+          </a>
+          <a href="chapters/314.html" class="chapter-card" data-title="第三百一十四章　燈靈" data-code="314" data-num="314">
+            <div class="card-main">
+              <span class="card-code">#314</span>
+              <span class="card-title">第三百一十四章　燈靈</span>
+            </div>
+            <span class="card-words">4,465字</span>
+          </a>
+          <a href="chapters/315.html" class="chapter-card" data-title="第三百一十五章　嘲" data-code="315" data-num="315">
+            <div class="card-main">
+              <span class="card-code">#315</span>
+              <span class="card-title">第三百一十五章　嘲</span>
+            </div>
+            <span class="card-words">4,467字</span>
+          </a>
+          <a href="chapters/316.html" class="chapter-card" data-title="第三百一十六章　餓" data-code="316" data-num="316">
+            <div class="card-main">
+              <span class="card-code">#316</span>
+              <span class="card-title">第三百一十六章　餓</span>
+            </div>
+            <span class="card-words">4,469字</span>
+          </a>
+          <a href="chapters/317.html" class="chapter-card" data-title="第三百一十七章　歲空" data-code="317" data-num="317">
+            <div class="card-main">
+              <span class="card-code">#317</span>
+              <span class="card-title">第三百一十七章　歲空</span>
+            </div>
+            <span class="card-words">4,472字</span>
+          </a>
+          <a href="chapters/318.html" class="chapter-card" data-title="第三百一十八章　問" data-code="318" data-num="318">
+            <div class="card-main">
+              <span class="card-code">#318</span>
+              <span class="card-title">第三百一十八章　問</span>
+            </div>
+            <span class="card-words">4,462字</span>
+          </a>
+          <a href="chapters/319.html" class="chapter-card" data-title="第三百一十九章　仇" data-code="319" data-num="319">
+            <div class="card-main">
+              <span class="card-code">#319</span>
+              <span class="card-title">第三百一十九章　仇</span>
+            </div>
+            <span class="card-words">4,467字</span>
+          </a>
+          <a href="chapters/320.html" class="chapter-card" data-title="第三百二十章　別信燈" data-code="320" data-num="320">
+            <div class="card-main">
+              <span class="card-code">#320</span>
+              <span class="card-title">第三百二十章　別信燈</span>
+            </div>
+            <span class="card-words">4,487字</span>
+          </a>
+          <a href="chapters/321.html" class="chapter-card" data-title="第三百二十一章　第三路" data-code="321" data-num="321">
+            <div class="card-main">
+              <span class="card-code">#321</span>
+              <span class="card-title">第三百二十一章　第三路</span>
+            </div>
+            <span class="card-words">4,473字</span>
+          </a>
+          <a href="chapters/322.html" class="chapter-card" data-title="第三百二十二章　舊路" data-code="322" data-num="322">
+            <div class="card-main">
+              <span class="card-code">#322</span>
+              <span class="card-title">第三百二十二章　舊路</span>
+            </div>
+            <span class="card-words">4,462字</span>
+          </a>
+          <a href="chapters/323.html" class="chapter-card" data-title="第三百二十三章　同意門" data-code="323" data-num="323">
+            <div class="card-main">
+              <span class="card-code">#323</span>
+              <span class="card-title">第三百二十三章　同意門</span>
+            </div>
+            <span class="card-words">4,461字</span>
+          </a>
+          <a href="chapters/324.html" class="chapter-card" data-title="第三百二十四章　老劉頭" data-code="324" data-num="324">
+            <div class="card-main">
+              <span class="card-code">#324</span>
+              <span class="card-title">第三百二十四章　老劉頭</span>
+            </div>
+            <span class="card-words">4,465字</span>
+          </a>
+          <a href="chapters/325.html" class="chapter-card" data-title="第三百二十五章　阿蘅" data-code="325" data-num="325">
+            <div class="card-main">
+              <span class="card-code">#325</span>
+              <span class="card-title">第三百二十五章　阿蘅</span>
+            </div>
+            <span class="card-words">4,455字</span>
+          </a>
+          <a href="chapters/326.html" class="chapter-card" data-title="第三百二十六章　十九口" data-code="326" data-num="326">
+            <div class="card-main">
+              <span class="card-code">#326</span>
+              <span class="card-title">第三百二十六章　十九口</span>
+            </div>
+            <span class="card-words">4,459字</span>
+          </a>
+          <a href="chapters/327.html" class="chapter-card" data-title="第三百二十七章　知微" data-code="327" data-num="327">
+            <div class="card-main">
+              <span class="card-code">#327</span>
+              <span class="card-title">第三百二十七章　知微</span>
+            </div>
+            <span class="card-words">4,461字</span>
+          </a>
+          <a href="chapters/328.html" class="chapter-card" data-title="第三百二十八章　長明" data-code="328" data-num="328">
+            <div class="card-main">
+              <span class="card-code">#328</span>
+              <span class="card-title">第三百二十八章　長明</span>
+            </div>
+            <span class="card-words">4,459字</span>
+          </a>
+          <a href="chapters/329.html" class="chapter-card" data-title="第三百二十九章　伯年" data-code="329" data-num="329">
+            <div class="card-main">
+              <span class="card-code">#329</span>
+              <span class="card-title">第三百二十九章　伯年</span>
+            </div>
+            <span class="card-words">4,465字</span>
+          </a>
+          <a href="chapters/330.html" class="chapter-card" data-title="第三百三十章　合道" data-code="330" data-num="330">
+            <div class="card-main">
+              <span class="card-code">#330</span>
+              <span class="card-title">第三百三十章　合道</span>
+            </div>
+            <span class="card-words">4,460字</span>
+          </a>
+          <a href="chapters/331.html" class="chapter-card" data-title="第三百三十一章　附身" data-code="331" data-num="331">
+            <div class="card-main">
+              <span class="card-code">#331</span>
+              <span class="card-title">第三百三十一章　附身</span>
+            </div>
+            <span class="card-words">4,460字</span>
+          </a>
+          <a href="chapters/332.html" class="chapter-card" data-title="第三百三十二章　闕戰" data-code="332" data-num="332">
+            <div class="card-main">
+              <span class="card-code">#332</span>
+              <span class="card-title">第三百三十二章　闕戰</span>
+            </div>
+            <span class="card-words">4,473字</span>
+          </a>
+          <a href="chapters/333.html" class="chapter-card" data-title="第三百三十三章　短刃" data-code="333" data-num="333">
+            <div class="card-main">
+              <span class="card-code">#333</span>
+              <span class="card-title">第三百三十三章　短刃</span>
+            </div>
+            <span class="card-words">4,460字</span>
+          </a>
+          <a href="chapters/334.html" class="chapter-card" data-title="第三百三十四章　暫分" data-code="334" data-num="334">
+            <div class="card-main">
+              <span class="card-code">#334</span>
+              <span class="card-title">第三百三十四章　暫分</span>
+            </div>
+            <span class="card-words">4,457字</span>
+          </a>
+          <a href="chapters/335.html" class="chapter-card" data-title="第三百三十五章　沉岸" data-code="335" data-num="335">
+            <div class="card-main">
+              <span class="card-code">#335</span>
+              <span class="card-title">第三百三十五章　沉岸</span>
+            </div>
+            <span class="card-words">4,474字</span>
+          </a>
+        </div>
+      </div>
+      <div class="volume-section" id="vol-9" data-vol-num="9">
+        <div class="volume-header">
+          <h3>第九卷　一燈照夜 <small>（第 336–365 章）</small></h3>
+          <span class="volume-desc">人間至暗・終局歸一・照破長夜</span>
+        </div>
+        <div class="chapters-grid">
+          <a href="chapters/336.html" class="chapter-card" data-title="第三百三十六章　潮" data-code="336" data-num="336">
+            <div class="card-main">
+              <span class="card-code">#336</span>
+              <span class="card-title">第三百三十六章　潮</span>
+            </div>
+            <span class="card-words">4,448字</span>
+          </a>
+          <a href="chapters/337.html" class="chapter-card" data-title="第三百三十七章　分守" data-code="337" data-num="337">
+            <div class="card-main">
+              <span class="card-code">#337</span>
+              <span class="card-title">第三百三十七章　分守</span>
+            </div>
+            <span class="card-words">4,427字</span>
+          </a>
+          <a href="chapters/338.html" class="chapter-card" data-title="第三百三十八章　中樞" data-code="338" data-num="338">
+            <div class="card-main">
+              <span class="card-code">#338</span>
+              <span class="card-title">第三百三十八章　中樞</span>
+            </div>
+            <span class="card-words">4,419字</span>
+          </a>
+          <a href="chapters/339.html" class="chapter-card" data-title="第三百三十九章　深海" data-code="339" data-num="339">
+            <div class="card-main">
+              <span class="card-code">#339</span>
+              <span class="card-title">第三百三十九章　深海</span>
+            </div>
+            <span class="card-words">4,427字</span>
+          </a>
+          <a href="chapters/340.html" class="chapter-card" data-title="第三百四十章　拒者" data-code="340" data-num="340">
+            <div class="card-main">
+              <span class="card-code">#340</span>
+              <span class="card-title">第三百四十章　拒者</span>
+            </div>
+            <span class="card-words">4,419字</span>
+          </a>
+          <a href="chapters/341.html" class="chapter-card" data-title="第三百四十一章　泣散" data-code="341" data-num="341">
+            <div class="card-main">
+              <span class="card-code">#341</span>
+              <span class="card-title">第三百四十一章　泣散</span>
+            </div>
+            <span class="card-words">4,415字</span>
+          </a>
+          <a href="chapters/342.html" class="chapter-card" data-title="第三百四十二章　青嵐線" data-code="342" data-num="342">
+            <div class="card-main">
+              <span class="card-code">#342</span>
+              <span class="card-title">第三百四十二章　青嵐線</span>
+            </div>
+            <span class="card-words">4,420字</span>
+          </a>
+          <a href="chapters/343.html" class="chapter-card" data-title="第三百四十三章　赤霄線" data-code="343" data-num="343">
+            <div class="card-main">
+              <span class="card-code">#343</span>
+              <span class="card-title">第三百四十三章　赤霄線</span>
+            </div>
+            <span class="card-words">4,421字</span>
+          </a>
+          <a href="chapters/344.html" class="chapter-card" data-title="第三百四十四章　白骨線" data-code="344" data-num="344">
+            <div class="card-main">
+              <span class="card-code">#344</span>
+              <span class="card-title">第三百四十四章　白骨線</span>
+            </div>
+            <span class="card-words">4,420字</span>
+          </a>
+          <a href="chapters/345.html" class="chapter-card" data-title="第三百四十五章　玄冰線" data-code="345" data-num="345">
+            <div class="card-main">
+              <span class="card-code">#345</span>
+              <span class="card-title">第三百四十五章　玄冰線</span>
+            </div>
+            <span class="card-words">4,425字</span>
+          </a>
+          <a href="chapters/346.html" class="chapter-card" data-title="第三百四十六章　萬燼" data-code="346" data-num="346">
+            <div class="card-main">
+              <span class="card-code">#346</span>
+              <span class="card-title">第三百四十六章　萬燼</span>
+            </div>
+            <span class="card-words">4,429字</span>
+          </a>
+          <a href="chapters/347.html" class="chapter-card" data-title="第三百四十七章　敬" data-code="347" data-num="347">
+            <div class="card-main">
+              <span class="card-code">#347</span>
+              <span class="card-title">第三百四十七章　敬</span>
+            </div>
+            <span class="card-words">4,414字</span>
+          </a>
+          <a href="chapters/348.html" class="chapter-card" data-title="第三百四十八章　失我前" data-code="348" data-num="348">
+            <div class="card-main">
+              <span class="card-code">#348</span>
+              <span class="card-title">第三百四十八章　失我前</span>
+            </div>
+            <span class="card-words">4,411字</span>
+          </a>
+          <a href="chapters/349.html" class="chapter-card" data-title="第三百四十九章　喚名" data-code="349" data-num="349">
+            <div class="card-main">
+              <span class="card-code">#349</span>
+              <span class="card-title">第三百四十九章　喚名</span>
+            </div>
+            <span class="card-words">4,425字</span>
+          </a>
+          <a href="chapters/350.html" class="chapter-card" data-title="第三百五十章　金瘡藥" data-code="350" data-num="350">
+            <div class="card-main">
+              <span class="card-code">#350</span>
+              <span class="card-title">第三百五十章　金瘡藥</span>
+            </div>
+            <span class="card-words">4,437字</span>
+          </a>
+          <a href="chapters/351.html" class="chapter-card" data-title="第三百五十一章　欠著" data-code="351" data-num="351">
+            <div class="card-main">
+              <span class="card-code">#351</span>
+              <span class="card-title">第三百五十一章　欠著</span>
+            </div>
+            <span class="card-words">4,423字</span>
+          </a>
+          <a href="chapters/352.html" class="chapter-card" data-title="第三百五十二章　繼續" data-code="352" data-num="352">
+            <div class="card-main">
+              <span class="card-code">#352</span>
+              <span class="card-title">第三百五十二章　繼續</span>
+            </div>
+            <span class="card-words">4,424字</span>
+          </a>
+          <a href="chapters/353.html" class="chapter-card" data-title="第三百五十三章　撲" data-code="353" data-num="353">
+            <div class="card-main">
+              <span class="card-code">#353</span>
+              <span class="card-title">第三百五十三章　撲</span>
+            </div>
+            <span class="card-words">4,425字</span>
+          </a>
+          <a href="chapters/354.html" class="chapter-card" data-title="第三百五十四章　光柱" data-code="354" data-num="354">
+            <div class="card-main">
+              <span class="card-code">#354</span>
+              <span class="card-title">第三百五十四章　光柱</span>
+            </div>
+            <span class="card-words">4,424字</span>
+          </a>
+          <a href="chapters/355.html" class="chapter-card" data-title="第三百五十五章　父" data-code="355" data-num="355">
+            <div class="card-main">
+              <span class="card-code">#355</span>
+              <span class="card-title">第三百五十五章　父</span>
+            </div>
+            <span class="card-words">4,418字</span>
+          </a>
+          <a href="chapters/356.html" class="chapter-card" data-title="第三百五十六章　淚" data-code="356" data-num="356">
+            <div class="card-main">
+              <span class="card-code">#356</span>
+              <span class="card-title">第三百五十六章　淚</span>
+            </div>
+            <span class="card-words">4,425字</span>
+          </a>
+          <a href="chapters/357.html" class="chapter-card" data-title="第三百五十七章　第一縷" data-code="357" data-num="357">
+            <div class="card-main">
+              <span class="card-code">#357</span>
+              <span class="card-title">第三百五十七章　第一縷</span>
+            </div>
+            <span class="card-words">4,424字</span>
+          </a>
+          <a href="chapters/358.html" class="chapter-card" data-title="第三百五十八章　靈散" data-code="358" data-num="358">
+            <div class="card-main">
+              <span class="card-code">#358</span>
+              <span class="card-title">第三百五十八章　靈散</span>
+            </div>
+            <span class="card-words">4,423字</span>
+          </a>
+          <a href="chapters/359.html" class="chapter-card" data-title="第三百五十九章　眠" data-code="359" data-num="359">
+            <div class="card-main">
+              <span class="card-code">#359</span>
+              <span class="card-title">第三百五十九章　眠</span>
+            </div>
+            <span class="card-words">4,416字</span>
+          </a>
+          <a href="chapters/360.html" class="chapter-card" data-title="第三百六十章　一息" data-code="360" data-num="360">
+            <div class="card-main">
+              <span class="card-code">#360</span>
+              <span class="card-title">第三百六十章　一息</span>
+            </div>
+            <span class="card-words">4,420字</span>
+          </a>
+          <a href="chapters/361.html" class="chapter-card" data-title="第三百六十一章　燃" data-code="361" data-num="361">
+            <div class="card-main">
+              <span class="card-code">#361</span>
+              <span class="card-title">第三百六十一章　燃</span>
+            </div>
+            <span class="card-words">4,438字</span>
+          </a>
+          <a href="chapters/362.html" class="chapter-card" data-title="第三百六十二章　燈河" data-code="362" data-num="362">
+            <div class="card-main">
+              <span class="card-code">#362</span>
+              <span class="card-title">第三百六十二章　燈河</span>
+            </div>
+            <span class="card-words">4,425字</span>
+          </a>
+          <a href="chapters/363.html" class="chapter-card" data-title="第三百六十三章　照夜成" data-code="363" data-num="363">
+            <div class="card-main">
+              <span class="card-code">#363</span>
+              <span class="card-title">第三百六十三章　照夜成</span>
+            </div>
+            <span class="card-words">4,424字</span>
+          </a>
+          <a href="chapters/364.html" class="chapter-card" data-title="第三百六十四章　誰" data-code="364" data-num="364">
+            <div class="card-main">
+              <span class="card-code">#364</span>
+              <span class="card-title">第三百六十四章　誰</span>
+            </div>
+            <span class="card-words">4,434字</span>
+          </a>
+          <a href="chapters/365.html" class="chapter-card" data-title="第三百六十五章　燈下" data-code="365" data-num="365">
+            <div class="card-main">
+              <span class="card-code">#365</span>
+              <span class="card-title">第三百六十五章　燈下</span>
+            </div>
+            <span class="card-words">4,482字</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 無搜尋結果提示 -->
+    <div id="no-results" class="no-results" style="display:none;">
+      <p>找不到符合「<span id="search-keyword"></span>」的章節，請嘗試不同關鍵字或切換回「全部章節」。</p>
+    </div>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="site-footer">
+    <p>《萬燈皆燼》全書共 365 章・純靜態公開閱讀站</p>
+    <p>介面繁體中文・支援 GitHub Pages 離線託管・無廣告・無付費牆・無登入機制</p>
+  </footer>
+
+  <!-- 回到頂部按鈕 -->
+  <button id="back-to-top" class="back-to-top" title="回到頂部" aria-label="回到頂部">↑</button>
+
+  <script src="assets/reader.js"></script>
+</body>
+</html>
